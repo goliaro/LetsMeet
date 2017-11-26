@@ -68,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="271.19999999999999" y="123.68815592203899"/>
         </scene>
-        <!--Meal View Controller-->
+        <!--New Meal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MealViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,14 +115,27 @@
                             <constraint firstItem="aXg-8k-Tg6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zo7-bO-J4U"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="jt8-VB-qdC"/>
+                    <navigationItem key="navigationItem" title="New Meal" id="jt8-VB-qdC">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="91Q-PD-sCS">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="SGd-g2-XD1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="tyl-w0-MXE">
+                            <connections>
+                                <segue destination="hpM-uu-4iu" kind="unwind" unwindAction="unwindToMealListWithSender:" id="z5e-Ta-oFs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="YL4-zQ-Qae" id="ft7-Bt-5od"/>
                         <outlet property="photoImageView" destination="PUL-Th-XGf" id="H7k-lO-pD9"/>
                         <outlet property="ratingControl" destination="62F-jx-vyZ" id="M1s-6M-03a"/>
+                        <outlet property="saveButton" destination="tyl-w0-MXE" id="IMi-4W-WHB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="hpM-uu-4iu" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="D8X-UP-glq">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="SOt-pK-rUS"/>
