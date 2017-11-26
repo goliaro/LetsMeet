@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D575F8641FCA501A00EC6224 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575F8631FCA501A00EC6224 /* Meal.swift */; };
 		D589E4991FC9D597001005D5 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D589E4981FC9D597001005D5 /* RatingControl.swift */; };
 		D5978C5D1FC906B50004DB10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5978C5C1FC906B50004DB10 /* AppDelegate.swift */; };
 		D5978C5F1FC906B50004DB10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5978C5E1FC906B50004DB10 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D575F8631FCA501A00EC6224 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D589E4981FC9D597001005D5 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		D5978C591FC906B50004DB10 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5978C5C1FC906B50004DB10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				D5978C5C1FC906B50004DB10 /* AppDelegate.swift */,
 				D5978C5E1FC906B50004DB10 /* ViewController.swift */,
+				D575F8631FCA501A00EC6224 /* Meal.swift */,
 				D589E4981FC9D597001005D5 /* RatingControl.swift */,
 				D5978C601FC906B50004DB10 /* Main.storyboard */,
 				D5978C631FC906B50004DB10 /* Assets.xcassets */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D575F8641FCA501A00EC6224 /* Meal.swift in Sources */,
 				D5978C5F1FC906B50004DB10 /* ViewController.swift in Sources */,
 				D589E4991FC9D597001005D5 /* RatingControl.swift in Sources */,
 				D5978C5D1FC906B50004DB10 /* AppDelegate.swift in Sources */,
