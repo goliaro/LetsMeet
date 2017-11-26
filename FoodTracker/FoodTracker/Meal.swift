@@ -8,13 +8,21 @@
 
 import UIKit
 
-class Meal {
+class Meal: NSObject {
     
     //MARK: Properties
     
     var name: String
     var photo: UIImage?
     var rating: Int
+    
+    //MARK: Types
+    struct PropertyKey {
+        static let name = "name"
+        static let photo = "photo"
+        static let rating = "rating"
+        
+    }
     
     //MARK: Initialization
     
