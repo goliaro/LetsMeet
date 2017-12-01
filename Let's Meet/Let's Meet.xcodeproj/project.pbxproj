@@ -103,9 +103,9 @@
 				D56B27491FD0F1510091648F /* ViewController.swift */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
 				D56B27751FD0F2510091648F /* GroupTableViewCell.swift */,
-				D56B274E1FD0F1510091648F /* Assets.xcassets */,
 				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
 				D56B27531FD0F1510091648F /* Info.plist */,
+				D56B274E1FD0F1510091648F /* Assets.xcassets */,
 			);
 			path = "Let's Meet";
 			sourceTree = "<group>";
@@ -511,6 +511,7 @@
 				D56B276E1FD0F1510091648F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D56B276F1FD0F1510091648F /* Build configuration list for PBXNativeTarget "Let's MeetTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +520,7 @@
 				D56B27711FD0F1510091648F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D56B27721FD0F1510091648F /* Build configuration list for PBXNativeTarget "Let's MeetUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +529,7 @@
 				D56B27741FD0F1510091648F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
