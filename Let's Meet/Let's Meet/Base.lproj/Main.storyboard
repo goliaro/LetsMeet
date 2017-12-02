@@ -45,6 +45,11 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="groupDescriptionLabel" destination="0FC-mZ-4dT" id="xhj-3G-WBf"/>
+                                    <outlet property="groupNameLabel" destination="f60-dH-IG8" id="Qcf-QB-cAt"/>
+                                    <outlet property="groupPhotoImageView" destination="Mzr-UD-5gd" id="4Yt-tq-wra"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
