@@ -20,6 +20,8 @@
 
 
 import UIKit
+import os.log
+
 
 class GroupTableViewController: UITableViewController {
     
@@ -115,15 +117,33 @@ class GroupTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        // Just call superclass implementation
+        super.prepare(for: segue, sender: sender)
+        
+        guard let groupDetailedViewController = segue.destination as? GroupViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        guard let selectedGroupCell = sender as? GroupTableViewCell else {
+            fatalError("Unexpected sender: \(sender)")
+        }
+        
+        guard let indexPath = tableView.indexPath(for: selectedGroupCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        let selectedGroup = groups[indexPath.row]
+        groupDetailedViewController.group = selectedGroup
+        
+        
     }
-    */
+    
     
     
     //MARK: Private Methods
