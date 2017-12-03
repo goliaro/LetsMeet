@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557EF0B1FD457650087B474 /* GroupViewController.swift */; };
+		D557EF0E1FD464200087B474 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557EF0D1FD464200087B474 /* Activity.swift */; };
 		D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B27471FD0F1510091648F /* AppDelegate.swift */; };
 		D56B274A1FD0F1510091648F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B27491FD0F1510091648F /* ViewController.swift */; };
 		D56B274D1FD0F1510091648F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56B274B1FD0F1510091648F /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		D557EF0B1FD457650087B474 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupViewController.swift; path = ../GroupViewController.swift; sourceTree = "<group>"; };
+		D557EF0D1FD464200087B474 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D56B27441FD0F1510091648F /* Let's Meet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let's Meet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56B27471FD0F1510091648F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D56B27491FD0F1510091648F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				D56B27491FD0F1510091648F /* ViewController.swift */,
 				D56B27751FD0F2510091648F /* GroupTableViewCell.swift */,
 				D5D531201FD2F80700A54464 /* Group.swift */,
+				D557EF0D1FD464200087B474 /* Activity.swift */,
 				D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */,
 				D557EF0B1FD457650087B474 /* GroupViewController.swift */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
@@ -273,6 +276,7 @@
 			files = (
 				D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */,
 				D56B27761FD0F2510091648F /* GroupTableViewCell.swift in Sources */,
+				D557EF0E1FD464200087B474 /* Activity.swift in Sources */,
 				D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */,
 				D56B274A1FD0F1510091648F /* ViewController.swift in Sources */,
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
