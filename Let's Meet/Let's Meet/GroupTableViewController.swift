@@ -58,15 +58,27 @@ class GroupTableViewController: UITableViewController {
         return groups.count
     }
 
-    /*
+    // #cs50 this function configures and displays the table's visible cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "GroupTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GroupTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        // Fetches the appropriate meal for the data source layout.
+        let group = groups[indexPath.row]
+        
+        cell.groupNameLabel.text = group.name
+        cell.groupPhotoImageView.image = group.photo
+        cell.groupDescriptionLabel.text = group.description
+        
         return cell
     }
-    */
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -134,7 +146,7 @@ class GroupTableViewController: UITableViewController {
             fatalError("Unable to instantiate group1")
         }
         
-        guard let group3 = Group(name: "CSA group", photo: photo3, description: "Catholic Student Association (all members)") else {
+        guard let group3 = Group(name: "CSA", photo: photo3, description: "Catholic Student Association (all members)") else {
             fatalError("Unable to instantiate group1")
         }
         
