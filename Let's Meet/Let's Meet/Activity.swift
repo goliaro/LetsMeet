@@ -28,17 +28,18 @@ class Activity {
     
     var name: String
     var starting_time: Date
+    var ending_time: Date
     
     //#cs50 The location and descriptions are optional
     var description: String?
     var location: String?
-    var ending_time: Date?
+    
     
     
     // #cs50 These methods allow the initialization of the class Activity
     //MARK: Initialization
     
-    init?(name: String, starting_time: Date, description: String?, location: String?, ending_time: Date?) {
+    init?(name: String, starting_time: Date, ending_time: Date, description: String?, location: String?) {
         
         // #cs50 Initialize stored properties. Basically copies the values given as parameters of the initialization function into the variables of the Activity object
         self.name = name
