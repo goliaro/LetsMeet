@@ -29,6 +29,8 @@ class Group {
     var name: String
     var photo: UIImage?
     var description: String
+    var activities = [Activity]()
+    var members_usernames = [String]()
     
     
     // These methods allow the initialization of the class Group

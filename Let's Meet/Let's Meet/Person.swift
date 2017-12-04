@@ -1,5 +1,5 @@
 //
-//  Activity.swift
+//  Person.swift
 //  Let's Meet
 //
 //  Created by Oliaro, Gabriele on 12/3/17.
@@ -21,35 +21,31 @@
 import Foundation
 import UIKit
 
-class Activity {
+class Person {
     
-    // #cs50 These are the basic variable names used to store the information of each single activity
+    // #cs50 These are the basic variable names used to store the information of each single person
     //MARK: Properties
     
+    var username: String
+    var password: String //to be encrypted
     var name: String
-    var starting_time: Date
-    
-    //#cs50 The location and descriptions are optional
-    var description: String?
-    var location: String?
-    var ending_time: Date?
+    var photo: UIImage?
     
     
     // #cs50 These methods allow the initialization of the class Activity
     //MARK: Initialization
     
-    init?(name: String, starting_time: Date, description: String?, location: String?, ending_time: Date?) {
+    init?(username: String, password: String, name: String, photo: UIImage) {
         
         // #cs50 Initialize stored properties. Basically copies the values given as parameters of the initialization function into the variables of the Activity object
+        self.username = username
+        self.password = password
         self.name = name
-        self.starting_time = starting_time
-        self.description = description
-        self.location = location
-        self.ending_time = ending_time
+        self.photo = photo
         
         
         // We want the initialization to fail if there is no name or if there is no description.
-        if name.isEmpty  {
+        if name.isEmpty  || password.isEmpty || name.isEmpty || photo == nil {
             return nil
         }
         
@@ -57,3 +53,4 @@ class Activity {
     
     
 }
+
