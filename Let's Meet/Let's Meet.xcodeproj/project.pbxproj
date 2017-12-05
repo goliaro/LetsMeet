@@ -23,6 +23,8 @@
 		E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */; };
 		E0166FAB1FD663FB00D905F7 /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */; };
 		E0166FAD1FD666B600D905F7 /* GroupMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */; };
+		E01A6E4E1FD6E3ED00BA1B7D /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */; };
+		E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersViewController.swift; sourceTree = "<group>"; };
 		E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewCell.swift; sourceTree = "<group>"; };
+		E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
+		E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController2.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +135,8 @@
 				E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */,
 				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
+				E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */,
+				E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */,
 				D56B27531FD0F1510091648F /* Info.plist */,
 				D56B274E1FD0F1510091648F /* Assets.xcassets */,
 			);
@@ -223,6 +229,7 @@
 				TargetAttributes = {
 					D56B27431FD0F1510091648F = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3HZ8GXD28Q;
 						ProvisioningStyle = Automatic;
 					};
 					D56B27571FD0F1510091648F = {
@@ -299,7 +306,9 @@
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
 				D5D531211FD2F80700A54464 /* Group.swift in Sources */,
+				E01A6E4E1FD6E3ED00BA1B7D /* AddActivityViewController.swift in Sources */,
 				E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */,
+				E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */,
 				E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,10 +463,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3HZ8GXD28Q;
 				INFOPLIST_FILE = "Let's Meet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kit-alejandro-gabriel.Let-s-Meet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -466,10 +479,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3HZ8GXD28Q;
 				INFOPLIST_FILE = "Let's Meet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kit-alejandro-gabriel.Let-s-Meet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

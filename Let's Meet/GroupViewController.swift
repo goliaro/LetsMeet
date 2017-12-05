@@ -116,6 +116,18 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
             let selectedActivity = activities[indexPath.row]
             activityDetailedViewController.activity = selectedActivity
             
+        case "addActivity":
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination view controller \(segue.destination)")
+            }
+            
+            guard let addActivityViewController1 = navVC.viewControllers.first as? AddActivityViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)")
+                
+            }
+            
+            addActivityViewController1.recent_activities = group?.recent_activities
+        
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         

@@ -154,22 +154,31 @@ class GroupTableViewController: UITableViewController {
         let photo3 = UIImage(named: "CSA group")
         let photo4 = UIImage(named: "Best friends")
         
+        let recent_activities_sample = ["apple picking", "pset 8", "lunch", "running"]
+        
         // Instantiate the sample groups with name, photo and description
         guard let group1 = Group(name: "CS 50", photo: photo1, description: "Official group for Fall 2017") else {
             fatalError("Unable to instantiate group1")
         }
+        group1.recent_activities = recent_activities_sample
         
         guard let group2 = Group(name: "EC 10", photo: photo2, description: "Official group for Fall 2017") else {
             fatalError("Unable to instantiate group1")
         }
         
+        group2.recent_activities = recent_activities_sample
+        
         guard let group3 = Group(name: "CSA", photo: photo3, description: "Catholic Student Association (all members)") else {
             fatalError("Unable to instantiate group1")
         }
         
+        group3.recent_activities = recent_activities_sample
+        
         guard let group4 = Group(name: "Friends", photo: photo4, description: "Ryan, Pawel, Gabriele, Pedro, Joey, Caleb") else {
             fatalError("Unable to instantiate group1")
         }
+        
+        group4.recent_activities = recent_activities_sample
         
         groups += [group1, group2, group3, group4]
     }

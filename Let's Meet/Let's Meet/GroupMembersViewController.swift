@@ -13,8 +13,6 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: Properties
     var members_usernames = [String]()
     
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

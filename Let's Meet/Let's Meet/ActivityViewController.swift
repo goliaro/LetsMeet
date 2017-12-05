@@ -25,7 +25,6 @@ class ActivityViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        activityTitleLabel.text = "prova"
         
         // Display details of current activity
         if let activity = activity {
