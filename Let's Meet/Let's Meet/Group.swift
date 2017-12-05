@@ -30,7 +30,9 @@ class Group {
     var photo: UIImage?
     var description: String
     var activities = [Activity]()
-    var members_usernames = [String]()
+    var recent_activities: [String]
+    var members_usernames: [String]
+    
     
     
     // These methods allow the initialization of the class Group
@@ -42,6 +44,9 @@ class Group {
         self.name = name
         self.photo = photo
         self.description = description
+        
+        self.recent_activities = []
+        self.members_usernames = []
         
         
         // We want the initialization to fail if there is no name or if there is no description.
