@@ -68,7 +68,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
             fatalError("The dequeued cell is not an instance of ActivityTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
+        // Fetches the appropriate activity for the data source layout.
         let activity = activities[indexPath.row]
         
         // Configure the cell...

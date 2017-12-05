@@ -21,6 +21,8 @@
 		D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */; };
 		E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */; };
 		E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */; };
+		E0166FAB1FD663FB00D905F7 /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */; };
+		E0166FAD1FD666B600D905F7 /* GroupMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersViewController.swift; sourceTree = "<group>"; };
+		E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewCell.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +127,8 @@
 				D557EF0D1FD464200087B474 /* Activity.swift */,
 				E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */,
 				E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */,
+				E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */,
+				E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */,
 				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
 				D56B27531FD0F1510091648F /* Info.plist */,
@@ -284,6 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */,
+				E0166FAD1FD666B600D905F7 /* GroupMembersTableViewCell.swift in Sources */,
+				E0166FAB1FD663FB00D905F7 /* GroupMembersViewController.swift in Sources */,
 				D56B27761FD0F2510091648F /* GroupTableViewCell.swift in Sources */,
 				D557EF0E1FD464200087B474 /* Activity.swift in Sources */,
 				D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */,

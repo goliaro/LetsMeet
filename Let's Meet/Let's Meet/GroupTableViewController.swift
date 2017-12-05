@@ -26,13 +26,9 @@ import Foundation
 
 class GroupTableViewController: UITableViewController {
     
-    
-    
     //MARK: Properties
     
     var groups = [Group]() // This creates the array of objects Groups
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
