@@ -29,6 +29,7 @@ class Activity {
     var name: String
     var starting_time: Date
     var ending_time: Date
+    var participants_usernames: [String]
     
     //#cs50 The location and descriptions are optional
     var description: String?
@@ -39,7 +40,7 @@ class Activity {
     // #cs50 These methods allow the initialization of the class Activity
     //MARK: Initialization
     
-    init?(name: String, starting_time: Date, ending_time: Date, description: String?, location: String?) {
+    init?(name: String, starting_time: Date, ending_time: Date, description: String?, location: String?, participants_usernames: [String]) {
         
         // #cs50 Initialize stored properties. Basically copies the values given as parameters of the initialization function into the variables of the Activity object
         self.name = name
@@ -47,6 +48,7 @@ class Activity {
         self.description = description
         self.location = location
         self.ending_time = ending_time
+        self.participants_usernames = participants_usernames
         
         
         // We want the initialization to fail if there is no name or if there is no description.

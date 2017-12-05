@@ -20,7 +20,7 @@
 		D5D531211FD2F80700A54464 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D531201FD2F80700A54464 /* Group.swift */; };
 		D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */; };
 		E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */; };
-		E013FBAB1FD6064B00BCA2C3 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBAA1FD6064B00BCA2C3 /* ActivityTableViewController.swift */; };
+		E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +61,7 @@
 		D5D531201FD2F80700A54464 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
-		E013FBAA1FD6064B00BCA2C3 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
+		E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +122,7 @@
 				D557EF0B1FD457650087B474 /* GroupViewController.swift */,
 				D557EF0D1FD464200087B474 /* Activity.swift */,
 				E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */,
-				E013FBAA1FD6064B00BCA2C3 /* ActivityTableViewController.swift */,
+				E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */,
 				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
 				D56B27531FD0F1510091648F /* Info.plist */,
@@ -289,10 +289,10 @@
 				D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */,
 				D56B274A1FD0F1510091648F /* ViewController.swift in Sources */,
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
-				E013FBAB1FD6064B00BCA2C3 /* ActivityTableViewController.swift in Sources */,
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
 				D5D531211FD2F80700A54464 /* Group.swift in Sources */,
 				E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */,
+				E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

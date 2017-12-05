@@ -26,7 +26,7 @@ class Person {
     // #cs50 These are the basic variable names used to store the information of each single person
     //MARK: Properties
     
-    var username: String
+    var username: String // or user_id
     var password: String //to be encrypted
     var name: String
     var photo: UIImage?

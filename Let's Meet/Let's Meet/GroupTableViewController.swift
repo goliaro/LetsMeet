@@ -21,6 +21,7 @@
 
 import UIKit
 import os.log
+import Foundation
 
 
 class GroupTableViewController: UITableViewController {
@@ -170,7 +171,7 @@ class GroupTableViewController: UITableViewController {
             fatalError("Unable to instantiate group1")
         }
         
-        guard let group4 = Group(name: "Best friends", photo: photo4, description: "Ryan, Pawel, Gabriele, Pedro, Joey, Caleb") else {
+        guard let group4 = Group(name: "Friends", photo: photo4, description: "Ryan, Pawel, Gabriele, Pedro, Joey, Caleb") else {
             fatalError("Unable to instantiate group1")
         }
         
