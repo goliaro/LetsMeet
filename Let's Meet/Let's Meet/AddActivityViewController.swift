@@ -9,13 +9,14 @@
 import UIKit
 import os.log
 
-class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     //MARK: Properties
     @IBOutlet weak var activityNamePicker: UIPickerView!
     @IBOutlet weak var activityNameLabel: UITextField!
     @IBOutlet weak var activityDescriptionLabel: UITextField!
     @IBOutlet weak var activityLocationLabel: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var recent_activities: [String]?
 
@@ -25,12 +26,30 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
 
         // Do any additional setup after loading the view.
         
+        //Handle the text field's user input through delegate callbacks.
+        activityNameLabel.delegate = self
+        activityDescriptionLabel.delegate = self
+        activityLocationLabel.delegate = self
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // Hide the keyboard
+        textField.resignFirstResponder()
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        return true
+        
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 175), animated: true)
     }
     
     
