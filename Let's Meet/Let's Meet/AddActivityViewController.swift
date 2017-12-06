@@ -49,6 +49,7 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        // #cs50 When the user starts typing, scroll down the page using a scroll view, so that no textfield is covered by the keyboard.
         scrollView.setContentOffset(CGPoint(x: 0, y: 175), animated: true)
     }
     
@@ -80,6 +81,7 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -93,16 +95,52 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
             
         case "goto_part2":
             
+            // #cs50 If the selected row in the picker view shows "New activity..." and the Name text field is empty, the user is not providing any valid name for the activity, so we need to fire an alert message.
+            if ((activityNamePicker.selectedRow(inComponent: 0) == recent_activities!.count) && activityNameLabel.text == "")
+            {
+                let alertController = UIAlertController(title: "Alert", message: "The name of the activity is missing!", preferredStyle: .alert)
+                
+                let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK");
+                }
+                
+                alertController.addAction(OK_button)
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+            
+            // #cs50 If the selected row in the picker view does not show "New activity..." and the Name text field is not empty, the user is providing two names for the same activity, which of course cannot be allowed
+            if ((activityNamePicker.selectedRow(inComponent: 0) < recent_activities!.count) && activityNameLabel.text != "")
+            {
+                let alertController = UIAlertController(title: "Alert", message: "You specified two different names for the same activity", preferredStyle: .alert)
+                let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK");
+                }
+                
+                alertController.addAction(OK_button)
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+            
             guard let AddActivityViewController2 = segue.destination as? AddActivityViewController2 else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            //if UIPickerView.
             
-            //let parameters: [String: String] = [""]
-            //AddActivityViewController2.
-            //let selectedActivity = activities[indexPath.row]
-            //activityDetailedViewController.activity = selectedActivity
+            // If the chosen row is "New Activity..." save the name typed into the text field, instead of the string in the selected row in the UIPickerView
+            if (activityNamePicker.selectedRow(inComponent: 0) == recent_activities!.count) {
+                AddActivityViewController2.activityName = activityNameLabel.text
+            }
+            // Otherwise save the name of the activity in the selected row in the pickerView
+            else {
+                // Pass the name of the activity in the datasource in the same row as the PickerView
+                AddActivityViewController2.activityName = recent_activities![activityNamePicker.selectedRow(inComponent: 0)]
+            }
+            
+            AddActivityViewController2.activityDescription = activityDescriptionLabel.text
+            AddActivityViewController2.activityLocation = activityLocationLabel.text
+            
+            
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
@@ -110,5 +148,4 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
     }
     
-
 }

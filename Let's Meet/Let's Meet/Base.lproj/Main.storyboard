@@ -360,7 +360,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Can Go!"/>
                                 <connections>
-                                    <action selector="CanGoButton:" destination="r4m-Z3-Bnv" eventType="touchUpInside" id="INi-tN-AYd"/>
                                     <segue destination="K2T-lI-Ygx" kind="show" id="NW8-sb-rKj"/>
                                 </connections>
                             </button>
@@ -379,10 +378,10 @@
             </objects>
             <point key="canvasLocation" x="4417.5" y="54.929577464788736"/>
         </scene>
-        <!--View Controller-->
+        <!--Activity View Controller2-->
         <scene sceneID="2od-fJ-wzE">
             <objects>
-                <viewController id="K2T-lI-Ygx" sceneMemberID="viewController">
+                <viewController id="K2T-lI-Ygx" customClass="ActivityViewController2" customModule="Let_s_Meet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TGc-NW-DY7"/>
                         <viewControllerLayoutGuide type="bottom" id="i1y-iA-EOB"/>
@@ -395,6 +394,9 @@
                                 <rect key="frame" x="17" y="115" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to my Calendar"/>
+                                <connections>
+                                    <action selector="addToMyCalendar:" destination="K2T-lI-Ygx" eventType="touchUpInside" id="38x-uw-dBf"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l0G-u9-yjc">
                                 <rect key="frame" x="0.0" y="197" width="320" height="304"/>
@@ -435,6 +437,9 @@
                                 <rect key="frame" x="183" y="115" width="121" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send a message "/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="K2T-lI-Ygx" eventType="touchUpInside" id="Ltg-te-h4i"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buddies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4D-GT-zaG">
                                 <rect key="frame" x="123" y="168" width="74" height="21"/>
@@ -559,7 +564,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Next -&gt;"/>
                                         <connections>
-                                            <segue destination="CLg-oV-p7Z" kind="show" identifier="goto_part2" id="MfS-lf-1nS"/>
+                                            <segue destination="CLg-oV-p7Z" kind="show" identifier="goto_part2" id="Qb5-QF-pHm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -614,6 +619,10 @@
                                 <date key="date" timeIntervalSinceReferenceDate="534097893.78447902">
                                     <!--2017-12-04 16:31:33 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="StartingTimePickerValueChanged:" destination="CLg-oV-p7Z" eventType="valueChanged" id="6N6-gQ-QGu"/>
+                                    <action selector="didEndEditing" destination="CLg-oV-p7Z" eventType="editingDidEnd" id="yNb-G6-8rj"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick an ending time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPw-zW-UWE">
                                 <rect key="frame" x="95" y="286" width="131" height="21"/>
@@ -627,6 +636,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Start!!"/>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="CLg-oV-p7Z" eventType="touchUpInside" id="Klh-EU-KzM"/>
+                                    <segue destination="0Yw-JB-wMa" kind="unwind" unwindAction="unwindToGroupViewWithSender:" id="geO-D7-vYK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick a starting time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBT-mm-rpH">
                                 <rect key="frame" x="95" y="95" width="131" height="21"/>
@@ -641,9 +654,11 @@
                     <connections>
                         <outlet property="activityEndingTimePicker" destination="pml-A9-ot7" id="18Q-9a-Q8z"/>
                         <outlet property="activityStartingTimePicker" destination="TFZ-DU-pKc" id="PYa-24-XzV"/>
+                        <outlet property="startButton" destination="XVP-4d-ICI" id="pK8-vv-rfv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jME-WY-tqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0Yw-JB-wMa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4530" y="951.76056338028172"/>
         </scene>

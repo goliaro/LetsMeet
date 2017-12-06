@@ -158,4 +158,16 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         activities += [activity1, activity2, activity3]
         
     }
+    
+    
+    // MARK: Actions
+    @IBAction func unwindToGroupView(sender: UIStoryboardSegue) {
+        if let sourceviewController = sender.source as? AddActivityViewController2, let activity = sourceviewController.activity {
+            // Add a new activity
+            let newIndexPath = IndexPath(row: activities.count, section: 0)
+            
+            activities.append(activity)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
 }
