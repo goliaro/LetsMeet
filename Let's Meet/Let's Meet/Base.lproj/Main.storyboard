@@ -862,6 +862,9 @@
                                         <rect key="frame" x="170" y="414" width="124" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Pick from library"/>
+                                        <connections>
+                                            <action selector="loadImage:" destination="YIt-rP-ygJ" eventType="touchUpInside" id="YCw-lh-d3c"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
@@ -874,7 +877,11 @@
                                 <action selector="cancel:" destination="YIt-rP-ygJ" id="S9u-sT-cau"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wQa-Mt-sTh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="wQa-Mt-sTh">
+                            <connections>
+                                <action selector="done:" destination="YIt-rP-ygJ" id="zsK-T0-3dM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="itH-I6-dNz" id="QKu-t5-kMH"/>
@@ -883,6 +890,7 @@
                         <outlet property="passwordTextField" destination="zuI-e0-JHU" id="wws-28-fhK"/>
                         <outlet property="profilePhotoImageView" destination="RTw-MQ-EOY" id="npa-tS-hfL"/>
                         <outlet property="scrollView" destination="m2g-ZB-j4Z" id="Idg-yS-m01"/>
+                        <segue destination="uO2-2a-9Am" kind="presentation" identifier="showGroupsTable" id="OqC-Er-2cH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJp-vX-CGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1055,7 +1063,6 @@
                     <connections>
                         <outlet property="textFieldLoginEmail" destination="lZ8-C0-CC0" id="Z2B-Ut-Fim"/>
                         <outlet property="textFieldLoginPassword" destination="bTZ-nj-On8" id="jmL-kG-YZy"/>
-                        <segue destination="uO2-2a-9Am" kind="presentation" identifier="LoginToGroups" id="Er3-iQ-gW9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnd-cu-jMY" sceneMemberID="firstResponder"/>
@@ -1085,7 +1092,7 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k1Y-zT-TlI"/>
+        <segue reference="OqC-Er-2cH"/>
         <segue reference="eK4-OD-59c"/>
     </inferredMetricsTieBreakers>
 </document>

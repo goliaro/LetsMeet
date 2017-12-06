@@ -30,8 +30,8 @@
 		E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */; };
 		E047DFC31FD7E2D1008634DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */; };
 		E047DFC51FD7ECBB008634DD /* Login_RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */; };
-		E047DFC71FD7ECEB008634DD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC61FD7ECEB008634DD /* RegisterViewController.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
+		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
 		E6EE8447A965686D63319232 /* Pods_Let_s_Meet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */; };
 		F521096966F2F88A25DD60EF /* Pods_Let_s_MeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -90,8 +90,8 @@
 		E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController2.swift; sourceTree = "<group>"; };
 		E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_RegisterViewController.swift; sourceTree = "<group>"; };
-		E047DFC61FD7ECEB008634DD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E947F72A37DF7C0227CDCC96 /* Pods-Let's Meet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Meet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet.debug.xcconfig"; sourceTree = "<group>"; };
 		FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_MeetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -189,7 +189,7 @@
 				E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */,
 				E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */,
 				E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */,
-				E047DFC61FD7ECEB008634DD /* RegisterViewController.swift */,
+				E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */,
 				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
 				E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */,
@@ -524,7 +524,7 @@
 				D557EF0E1FD464200087B474 /* Activity.swift in Sources */,
 				D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */,
 				D56B274A1FD0F1510091648F /* ViewController.swift in Sources */,
-				E047DFC71FD7ECEB008634DD /* RegisterViewController.swift in Sources */,
+				E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */,
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
 				D5D531211FD2F80700A54464 /* Group.swift in Sources */,

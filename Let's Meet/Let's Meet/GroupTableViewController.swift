@@ -36,6 +36,20 @@ class GroupTableViewController: UITableViewController {
 
         // Load the sample data by calling the private function loadSampleGroups() defined at the end of this page
         loadSampleGroups()
+        
+        // Print the uid, email and photourl of the current Firebase user just for testing
+        let user = FIRAuth.auth()!.currentUser
+        if let user = user {
+            // The user's ID, unique to the Firebase project.
+            // Do NOT use this value to authenticate with your backend server,
+            // if you have one. Use getTokenWithCompletion:completion: instead.
+            let uid = user.uid
+            let email = user.email
+            let photoURL = user.photoURL
+            print(uid)
+            print(email)
+            print(photoURL)
+        }
     }
 
     override func didReceiveMemoryWarning() {
