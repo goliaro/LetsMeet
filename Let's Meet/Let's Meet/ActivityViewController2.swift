@@ -11,7 +11,9 @@ import EventKit
 
 class ActivityViewController2: UIViewController {
     
-    
+    var activity: Activity?
+    var group_name: String?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +49,12 @@ class ActivityViewController2: UIViewController {
                 print("error \(error)")
                 
                 let event:EKEvent = EKEvent(eventStore: eventStore)
-                event.title = "Add event testing Title"
-                event.startDate = Date()
-                event.endDate = Date()
-                event.notes = "This is a note"
+                event.title = self.group_name! + " - " + (self.activity?.name)!
+                event.startDate = (self.activity?.starting_time)!
+                event.endDate = (self.activity?.ending_time)!
+                event.notes = self.activity?.description
+                event.location = self.activity?.location
+                
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
                     try eventStore.save(event, span: .thisEvent)

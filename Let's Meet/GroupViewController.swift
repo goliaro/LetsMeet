@@ -112,9 +112,12 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            
+            // Pass the activity object to the activityDetailedViewController
             let selectedActivity = activities[indexPath.row]
             activityDetailedViewController.activity = selectedActivity
+            
+            // Pass the group name to the activityDetailedViewController
+            activityDetailedViewController.group_name = group?.name
             
         case "addActivity":
             guard let navVC = segue.destination as? UINavigationController else {

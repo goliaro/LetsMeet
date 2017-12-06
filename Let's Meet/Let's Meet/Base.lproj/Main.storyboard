@@ -360,7 +360,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Can Go!"/>
                                 <connections>
-                                    <segue destination="K2T-lI-Ygx" kind="show" id="NW8-sb-rKj"/>
+                                    <segue destination="K2T-lI-Ygx" kind="show" identifier="show_part2" id="NW8-sb-rKj"/>
                                 </connections>
                             </button>
                         </subviews>

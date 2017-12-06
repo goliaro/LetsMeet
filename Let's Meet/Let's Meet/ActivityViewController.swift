@@ -20,6 +20,7 @@ class ActivityViewController: UIViewController {
     
     
     var activity: Activity?
+    var group_name: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +66,31 @@ class ActivityViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        super.prepare(for: segue, sender: sender)
+        
+        //#cs50 There is actually only one segue, so the code would work evern without the switch, but it's safer to include it in case a new segue is added in the future.
+        switch(segue.identifier ?? "") {
+            
+        case "show_part2":
+            guard let ActivityViewController2 = segue.destination as? ActivityViewController2 else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            // Pass the activity object
+            ActivityViewController2.activity = activity
+            ActivityViewController2.group_name = group_name
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            
+        }
     }
-    */
+    
 
 }
