@@ -1048,10 +1048,10 @@
             </objects>
             <point key="canvasLocation" x="2070" y="-1358"/>
         </scene>
-        <!--View Controller-->
+        <!--Create New Group View Controller-->
         <scene sceneID="WuN-Fu-Emm">
             <objects>
-                <viewController id="nsy-dl-aDG" sceneMemberID="viewController">
+                <viewController id="nsy-dl-aDG" customClass="CreateNewGroupViewController" customModule="Let_s_Meet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B4M-i8-z1B"/>
                         <viewControllerLayoutGuide type="bottom" id="KBU-1k-yDC"/>
@@ -1395,7 +1395,7 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LtN-lF-Kbc"/>
+        <segue reference="Fas-6B-Wp4"/>
         <segue reference="OqC-Er-2cH"/>
         <segue reference="gtj-Nj-oxq"/>
     </inferredMetricsTieBreakers>
