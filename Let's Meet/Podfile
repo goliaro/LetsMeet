@@ -9,6 +9,7 @@ target 'Let\'s Meet' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   target 'Let\'s MeetTests' do
     inherit! :search_paths
     # Pods for testing

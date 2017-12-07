@@ -138,21 +138,32 @@ class GroupTableViewController: UITableViewController {
         // Just call superclass implementation
         super.prepare(for: segue, sender: sender)
         
-        guard let groupDetailedViewController = segue.destination as? GroupViewController else {
-            fatalError("Unexpected destination: \(segue.destination)")
+        
+        switch(segue.identifier ?? "") {
+            
+        case "showProfile":
+            os_log("Viewing or editing the members of the activity.", log: OSLog.default, type: .debug)
+            
+            
+        case "showGroup":
+            guard let groupDetailedViewController = segue.destination as? GroupViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedGroupCell = sender as? GroupTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedGroupCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedGroup = groups[indexPath.row]
+            groupDetailedViewController.group = selectedGroup
+        
+        default:
+            fatalError("Weird")
         }
-        
-        guard let selectedGroupCell = sender as? GroupTableViewCell else {
-            fatalError("Unexpected sender: \(sender)")
-        }
-        
-        guard let indexPath = tableView.indexPath(for: selectedGroupCell) else {
-            fatalError("The selected cell is not being displayed by the table")
-        }
-        
-        let selectedGroup = groups[indexPath.row]
-        groupDetailedViewController.group = selectedGroup
-        
         
     }
     
