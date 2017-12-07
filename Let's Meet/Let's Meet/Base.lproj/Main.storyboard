@@ -1147,10 +1147,10 @@
             </objects>
             <point key="canvasLocation" x="4231.875" y="-1520.0704225352113"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Member To Group View Controller-->
         <scene sceneID="TEv-JE-zaY">
             <objects>
-                <viewController id="IQD-jp-Y1I" sceneMemberID="viewController">
+                <viewController id="IQD-jp-Y1I" customClass="AddMemberToGroupViewController" customModule="Let_s_Meet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k11-QR-Vn4"/>
                         <viewControllerLayoutGuide type="bottom" id="Tzs-kD-bgT"/>
@@ -1186,11 +1186,17 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="IQD-jp-Y1I" id="Jgm-zL-Jxp"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zR5-A1-pTZ">
                                 <rect key="frame" x="95" y="290" width="131" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Lookup and Add"/>
+                                <connections>
+                                    <action selector="lookupAndAdd:" destination="IQD-jp-Y1I" eventType="touchUpInside" id="5FV-re-hQh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcW-Yz-M0Y">
                                 <rect key="frame" x="111" y="383" width="99" height="21"/>
@@ -1210,8 +1216,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="lNF-Kl-uec">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KZb-G8-H6O"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KZb-G8-H6O">
+                            <connections>
+                                <action selector="done:" destination="IQD-jp-Y1I" id="Y3k-lF-h4j"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="EmailTextField" destination="iP9-cm-JYk" id="qYj-Bj-yky"/>
+                        <outlet property="ResultTextField" destination="0qg-15-eAV" id="uqx-5S-UVH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bff-9p-HON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1413,7 +1427,7 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fas-6B-Wp4"/>
+        <segue reference="LtN-lF-Kbc"/>
         <segue reference="OqC-Er-2cH"/>
         <segue reference="eK4-OD-59c"/>
     </inferredMetricsTieBreakers>

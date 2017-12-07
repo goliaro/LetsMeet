@@ -107,6 +107,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
             alertController.addAction(OK_button)
             self.present(alertController, animated: true, completion: nil)
         }
+
         
         else {
             FIRAuth.auth()!.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {(user, error) in
@@ -158,7 +159,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
                             self.refUsers = FIRDatabase.database().reference().child("users")
                             
                             let key = user?.uid
-                            let user = ["id": key, "name": self.nameTextField.text! as String, "email": self.emailTextField.text! as String, ]
+                            let user = ["id": key, "name": self.nameTextField.text! as String, "email": self.emailTextField.text! as String ]
                             
                             self.refUsers.child(key!).setValue(user)
                             

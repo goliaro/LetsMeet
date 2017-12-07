@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import os.log
 
 class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,8 +18,13 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
     @IBOutlet weak var newGroupProfilePhotoImageView: UIImageView!
     
     var refGroups: FIRDatabaseReference!
+    var refGroupOwner: FIRDatabaseReference!
+    var refGroupMembers: FIRDatabaseReference!
+    var refUserGroups: FIRDatabaseReference!
+    
     let imagePicker = UIImagePickerController()
     
+    var group_key: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +45,40 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
         return true
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "addMember":
+            os_log("Adding new members", log: OSLog.default, type: .debug)
+            
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination view controller \(segue.destination)")
+            }
+            
+            guard let AddMemberToGroupViewController = navVC.viewControllers.first as? AddMemberToGroupViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)")
+                
+            }
+            
+            AddMemberToGroupViewController.group_key = self.group_key
+            
+
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+            
     }
-    */
+    
     
     
     // MARK: Actions
@@ -75,16 +106,32 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
             self.refGroups = FIRDatabase.database().reference().child("groups")
             
             let user = FIRAuth.auth()!.currentUser
+            
             let userID = user?.uid
             
-            let group_key = refGroups.childByAutoId().key
-            let group = ["id": group_key, "name": newGroupNameField.text as! String, "description": newGroupDescriptionField.text as! String, "owner": userID]
+            group_key = refGroups.childByAutoId().key
+            var group = ["id": group_key, "name": newGroupNameField.text as! String, "description": newGroupDescriptionField.text as! String, "owner": userID]
             
-            self.refGroups.child(group_key).setValue(group)
+            self.refGroups.child(group_key!).setValue(group)
+            
+            // Add the owner to the members list of the group
+            self.refGroupMembers = FIRDatabase.database().reference().child("groups/\(group_key!)/members")
+            let member_key = refGroupMembers.childByAutoId().key
+            var member = ["id": userID]
+            
+            self.refGroupMembers.child(member_key).setValue(member)
+            
+            // Add the group to the groups list of the user
+            self.refUserGroups = FIRDatabase.database().reference().child("users/\(userID!)/groups")
+            let group_key2 = refUserGroups.childByAutoId().key
+            var group2 = ["id": group_key]
+            
+            self.refUserGroups.child(group_key2).setValue(group2)
+            
             
             //Upload the profile picture into Firebase
             // Saves the profile pictures in Firebase storage, in the folder groups_profile_pictures, with the group UID as the name
-            let storageRef = FIRStorage.storage().reference().child("groups_profile_pictures/" + group_key + ".png")
+            let storageRef = FIRStorage.storage().reference().child("groups_profile_pictures/" + group_key! + ".png")
             if let uploadData = UIImagePNGRepresentation(newGroupProfilePhotoImageView.image!) {
                 storageRef.put(uploadData, metadata: nil) { (metadata, error) in
                     if error != nil {
@@ -104,7 +151,7 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
             }
             
             
-            // Ask the user if he or she wants to start adding members to the group immediately
+            // Use an UIAlertController of type actionSheet to ask the user if he or she wants to start adding members to the group immediately
             let alertController = UIAlertController(title: "New Group Created!", message: "Do you want to start adding members now?", preferredStyle: .actionSheet)
             
             let Yes = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
@@ -116,7 +163,6 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
                 print("You've pressed No button");
                 self.dismiss(animated: true, completion: nil)
             }
-            
             
             alertController.addAction(Yes)
             alertController.addAction(No)

@@ -21,6 +21,7 @@
 		D56B27761FD0F2510091648F /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B27751FD0F2510091648F /* GroupTableViewCell.swift */; };
 		D5D531211FD2F80700A54464 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D531201FD2F80700A54464 /* Group.swift */; };
 		D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */; };
+		E001EE151FD93CE10027B585 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E001EE141FD93CE10027B585 /* User.swift */; };
 		E0100C5B1FD7934800726B87 /* ActivityViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0100C5A1FD7934800726B87 /* ActivityViewController2.swift */; };
 		E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */; };
 		E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */; };
@@ -33,6 +34,7 @@
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 		E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */; };
 		E0C826071FD8EC3900DA36C3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826061FD8EC3900DA36C3 /* UIViewController.swift */; };
+		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
 		E0D6EE001FD8C1BE00D8632C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */; };
 		E6EE8447A965686D63319232 /* Pods_Let_s_Meet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */; };
@@ -84,6 +86,7 @@
 		D56B27751FD0F2510091648F /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		D5D531201FD2F80700A54464 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		E001EE141FD93CE10027B585 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E0100C5A1FD7934800726B87 /* ActivityViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController2.swift; sourceTree = "<group>"; };
 		E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826061FD8EC3900DA36C3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "../../../Let-sMeet- copy/Let's Meet/Let's Meet/ProfileViewController.swift"; sourceTree = "<group>"; };
 		E947F72A37DF7C0227CDCC96 /* Pods-Let's Meet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Meet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				D56B27471FD0F1510091648F /* AppDelegate.swift */,
 				D56B27491FD0F1510091648F /* ViewController.swift */,
 				E0AB9A741FD59F82005E4C0A /* Person.swift */,
+				E001EE141FD93CE10027B585 /* User.swift */,
 				D5D531201FD2F80700A54464 /* Group.swift */,
 				D56B27751FD0F2510091648F /* GroupTableViewCell.swift */,
 				D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */,
@@ -200,6 +205,7 @@
 				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
 				D56B274B1FD0F1510091648F /* Main.storyboard */,
 				E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */,
+				E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */,
 				E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */,
 				E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */,
 				D56B27531FD0F1510091648F /* Info.plist */,
@@ -527,6 +533,7 @@
 				D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */,
 				E0166FAD1FD666B600D905F7 /* GroupMembersTableViewCell.swift in Sources */,
 				E0100C5B1FD7934800726B87 /* ActivityViewController2.swift in Sources */,
+				E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */,
 				E047DFC51FD7ECBB008634DD /* Login_RegisterViewController.swift in Sources */,
 				E0166FAB1FD663FB00D905F7 /* GroupMembersViewController.swift in Sources */,
 				D56B27761FD0F2510091648F /* GroupTableViewCell.swift in Sources */,
@@ -545,6 +552,7 @@
 				E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */,
 				E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */,
 				E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */,
+				E001EE151FD93CE10027B585 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,8 +28,12 @@ import Firebase
 class GroupTableViewController: UITableViewController {
     
     //MARK: Properties
-    let ref = FIRDatabase.database().reference(withPath: "grocery-items")
     var groups = [Group]() // This creates the array of objects Groups
+    var users = [User]()
+    
+    var refUsers: FIRDatabaseReference!
+    var refGroups: FIRDatabaseReference!
+    var refHandle: UInt!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +41,31 @@ class GroupTableViewController: UITableViewController {
         // Load the sample data by calling the private function loadSampleGroups() defined at the end of this page
         loadSampleGroups()
         
-        // Print the uid, email and photourl of the current Firebase user just for testing
-        let user = FIRAuth.auth()!.currentUser
-        if let user = user {
-            // The user's ID, unique to the Firebase project.
-            // Do NOT use this value to authenticate with your backend server,
-            // if you have one. Use getTokenWithCompletion:completion: instead.
-            let uid = user.uid
-            let email = user.email
-            let photoURL = user.photoURL
-            print(uid)
-            print(email)
-            print(photoURL)
-        }
+        
+        let userID = FIRAuth.auth()!.currentUser?.uid
+        refUsers = FIRDatabase.database().reference().child("users/")
+        
+        FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let user = User()
+            
+                user.setValuesForKeys(dictionary)
+                self.users.append(user)
+            }
+            
+            
+                self.tableView.reloadData()
+            
+            
+            
+            
+        }, withCancel: nil)
+
+
+        
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -69,7 +84,7 @@ class GroupTableViewController: UITableViewController {
 
     // #cs50 This function determines the number of rows that the table will need by counting the number of groups in the groups array.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return users.count
     }
 
     // #cs50 this function configures and displays the table's visible cells
@@ -83,11 +98,11 @@ class GroupTableViewController: UITableViewController {
         }
         
         // Fetches the appropriate meal for the data source layout.
-        let group = groups[indexPath.row]
+        let user = users[indexPath.row]
         
-        cell.groupNameLabel.text = group.name
-        cell.groupPhotoImageView.image = group.photo
-        cell.groupDescriptionLabel.text = group.description
+        cell.groupNameLabel.text = user.name
+        
+        cell.groupDescriptionLabel.text = user.email
         
         return cell
     }
