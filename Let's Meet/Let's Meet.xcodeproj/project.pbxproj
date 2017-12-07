@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D80C2DF1FD7AC920088297F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80C2DE1FD7AC920088297F /* LoginViewController.swift */; };
 		97E5E49E3D89C7D339665BE4 /* Pods_Let_s_MeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009A774415F018A5C65514F1 /* Pods_Let_s_MeetTests.framework */; };
 		D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557EF0B1FD457650087B474 /* GroupViewController.swift */; };
 		D557EF0E1FD464200087B474 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557EF0D1FD464200087B474 /* Activity.swift */; };
@@ -33,7 +32,6 @@
 		E047DFC51FD7ECBB008634DD /* Login_RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 		E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */; };
-		E0C826071FD8EC3900DA36C3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826061FD8EC3900DA36C3 /* UIViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
 		E0D6EE001FD8C1BE00D8632C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */; };
@@ -60,7 +58,6 @@
 
 /* Begin PBXFileReference section */
 		009A774415F018A5C65514F1 /* Pods_Let_s_MeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_MeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D80C2DE1FD7AC920088297F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0D80C2E01FD7AE580088297F /* Let's Meet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Let's Meet.entitlements"; sourceTree = "<group>"; };
 		11B807F41BF231B567A34512 /* Pods-Let's MeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetUITests/Pods-Let's MeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_Meet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +95,6 @@
 		E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_RegisterViewController.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
-		E0C826061FD8EC3900DA36C3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "../../../Let-sMeet- copy/Let's Meet/Let's Meet/ProfileViewController.swift"; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 				E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */,
 				E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */,
 				E0100C5A1FD7934800726B87 /* ActivityViewController2.swift */,
-				E0C826061FD8EC3900DA36C3 /* UIViewController.swift */,
 				E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */,
 				E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */,
 				E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */,
@@ -210,7 +205,6 @@
 				E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */,
 				D56B27531FD0F1510091648F /* Info.plist */,
 				D56B274E1FD0F1510091648F /* Assets.xcassets */,
-				0D80C2DE1FD7AC920088297F /* LoginViewController.swift */,
 			);
 			path = "Let's Meet";
 			sourceTree = "<group>";
@@ -545,10 +539,8 @@
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
 				D5D531211FD2F80700A54464 /* Group.swift in Sources */,
-				E0C826071FD8EC3900DA36C3 /* UIViewController.swift in Sources */,
 				E01A6E4E1FD6E3ED00BA1B7D /* AddActivityViewController.swift in Sources */,
 				E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */,
-				0D80C2DF1FD7AC920088297F /* LoginViewController.swift in Sources */,
 				E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */,
 				E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */,
 				E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */,
