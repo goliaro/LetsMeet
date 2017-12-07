@@ -161,6 +161,8 @@ class GroupTableViewController: UITableViewController {
             let selectedGroup = groups[indexPath.row]
             groupDetailedViewController.group = selectedGroup
         
+        case "newGroup":
+            os_log("Adding a new group.", log: OSLog.default, type: .debug)
         default:
             fatalError("Weird")
         }

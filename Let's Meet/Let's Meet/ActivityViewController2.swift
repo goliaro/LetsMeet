@@ -11,7 +11,7 @@ import EventKit
 import Foundation
 import MessageUI
 
-class ActivityViewController2: UIViewController, MFMailComposeViewControllerDelegate {
+class ActivityViewController2: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,11 @@ class ActivityViewController2: UIViewController, MFMailComposeViewControllerDele
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
-        
+        let toRecipients = ["graciazhang@college.harvard.edu"]
+        let subject = "Feedback"
+        let body = "Enter comments here...<br><br><p>I have a \(versionText()).<br> And iOS version \(UIDevice.current.systemVersion).<br</p>"
+        let mail = configuredMailComposeViewController(recipients: toRecipients, subject: subject, body: body, isHtml: true, images: nil)
+        presentMailComposeViewController(mailComposeViewController: mail)
     }
     
     

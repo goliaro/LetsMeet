@@ -71,7 +71,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="to2-7A-dAD">
                             <connections>
-                                <segue destination="j1a-m4-IEJ" kind="presentation" id="gje-5g-vOE"/>
+                                <segue destination="j1a-m4-IEJ" kind="presentation" identifier="newGroup" id="gje-5g-vOE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1074,13 +1074,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7T-uY-rrE">
-                                <rect key="frame" x="101" y="267" width="116" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add an image (optional):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szh-ka-xbg">
                                 <rect key="frame" x="38" y="353" width="244" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1094,6 +1087,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nsy-dl-aDG" id="PmV-NC-BAp"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert the description here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJO-RB-vkL">
                                 <rect key="frame" x="16" y="296" width="288" height="30"/>
@@ -1101,6 +1097,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nsy-dl-aDG" id="dFG-nA-DBd"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-ar-zwI">
                                 <rect key="frame" x="30" y="391" width="128" height="128"/>
@@ -1112,17 +1111,36 @@
                                 <state key="normal" title="Pick from library"/>
                                 <connections>
                                     <action selector="loadImage:" destination="YIt-rP-ygJ" eventType="touchUpInside" id="WpF-lx-C27"/>
+                                    <action selector="pickProfilePhotoFromLibrary:" destination="nsy-dl-aDG" eventType="touchUpInside" id="16v-Kg-12D"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description (optional):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7T-uY-rrE">
+                                <rect key="frame" x="65" y="260" width="191" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="H7O-aQ-iiC">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="V0z-bw-tIv"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Eg1-Mb-WFL"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="V0z-bw-tIv">
+                            <connections>
+                                <action selector="cancel:" destination="nsy-dl-aDG" id="3ZH-0a-mwf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Eg1-Mb-WFL">
+                            <connections>
+                                <action selector="Done:" destination="nsy-dl-aDG" id="XPM-61-CKh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="LfZ-m9-MuN" kind="presentation" id="Fas-6B-Wp4"/>
+                        <outlet property="newGroupDescriptionField" destination="UJO-RB-vkL" id="Big-tz-1PP"/>
+                        <outlet property="newGroupNameField" destination="cEt-ZR-ZUK" id="YvZ-fd-bGT"/>
+                        <outlet property="newGroupProfilePhotoImageView" destination="jJp-ar-zwI" id="s7q-10-8Q2"/>
+                        <segue destination="LfZ-m9-MuN" kind="presentation" identifier="addMember" id="Fas-6B-Wp4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pg-X0-5e5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1397,6 +1415,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fas-6B-Wp4"/>
         <segue reference="OqC-Er-2cH"/>
-        <segue reference="gtj-Nj-oxq"/>
+        <segue reference="eK4-OD-59c"/>
     </inferredMetricsTieBreakers>
 </document>
