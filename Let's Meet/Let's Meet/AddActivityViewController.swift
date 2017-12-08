@@ -19,6 +19,8 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var scrollView: UIScrollView!
     
     var recent_activities: [String]?
+    var group_name: String?
+
 
 
     override func viewDidLoad() {

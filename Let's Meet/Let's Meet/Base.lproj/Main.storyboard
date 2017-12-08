@@ -186,7 +186,7 @@
                     <navigationItem key="navigationItem" id="0bb-Nh-ewB">
                         <barButtonItem key="rightBarButtonItem" title="View/Edit Members" id="S2X-i8-huC">
                             <connections>
-                                <segue destination="9pw-j7-vIg" kind="show" identifier="view_editMembers" id="BgP-oW-JWz"/>
+                                <segue destination="9pw-j7-vIg" kind="show" identifier="view_editMembers" id="r9r-2Y-TC1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="3453.75" y="54.929577464788736"/>
         </scene>
-        <!--View Controller-->
+        <!--Group Detailed View Controller-->
         <scene sceneID="7WK-21-vUe">
             <objects>
-                <viewController id="9pw-j7-vIg" sceneMemberID="viewController">
+                <viewController id="9pw-j7-vIg" customClass="GroupDetailedViewController" customModule="Let_s_Meet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ddw-em-X3r"/>
                         <viewControllerLayoutGuide type="bottom" id="5db-Sz-mdq"/>
@@ -377,7 +377,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Can Go!"/>
                                 <connections>
-                                    <segue destination="K2T-lI-Ygx" kind="show" id="NW8-sb-rKj"/>
+                                    <segue destination="K2T-lI-Ygx" kind="show" identifier="show_part2" id="NW8-sb-rKj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -484,6 +484,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="backToGroupHomebutton" destination="iQj-SK-9GK" id="qra-ur-gx5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N72-uv-B2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c3i-UM-37w" userLabel="Exit" sceneMemberID="exit"/>

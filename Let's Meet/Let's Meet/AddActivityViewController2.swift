@@ -22,12 +22,13 @@ class AddActivityViewController2: UIViewController {
     
     // This will contain the activity object after the Start!! button is pressed.
     var activity: Activity?
-    
+    var group_name: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        activityStartingTimePicker.minimumDate = Date()
     }
 
     override func didReceiveMemoryWarning() {

@@ -13,11 +13,13 @@ class ActivityViewController2: UIViewController {
     var activity: Activity?
     var group_name: String?
     
+    @IBOutlet weak var backToGroupHomebutton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        backToGroupHomebutton.setTitle("-> " + group_name! + " <-", for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,7 +39,6 @@ class ActivityViewController2: UIViewController {
     
     // MARK: Actions
     @IBAction func addToMyCalendar(_ sender: UIButton) {
-        
         let eventStore:EKEventStore = EKEventStore()
         
         eventStore.requestAccess(to: .event, completion: {(granted, error) in
@@ -47,25 +48,36 @@ class ActivityViewController2: UIViewController {
                 print("error \(error)")
                 
                 let event:EKEvent = EKEvent(eventStore: eventStore)
-                event.title = self.group_name! + " - " + (self.activity?.name)!
-                event.startDate = (self.activity?.starting_time)!
-                event.endDate = (self.activity?.ending_time)!
-                event.notes = self.activity?.description
-                event.location = self.activity?.location
-                
+                event.title = "Add event testing Title"
+                event.startDate = Date()
+                event.endDate = Date()
+                event.notes = "This is a note"
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
                     try eventStore.save(event, span: .thisEvent)
                 } catch let error as NSError {
                     print("error: \(error)")
                 }
-                print("Save event")
+                let alertController = UIAlertController(title: "Confirmation", message: "The event was successfully saved!", preferredStyle: .alert)
+                
+                let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK");
+                }
+                
+                alertController.addAction(OK_button)
+                self.present(alertController, animated: true, completion: nil)
             } else {
-                print("error: \(error)")
+                let alertController = UIAlertController(title: "Alert", message: "The event was not saved!", preferredStyle: .alert)
+                
+                let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK");
+                }
+                
+                alertController.addAction(OK_button)
+                self.present(alertController, animated: true, completion: nil)
             }
         })
     }
-    
     @IBAction func sendMessage(_ sender: UIButton) {
         
     }
