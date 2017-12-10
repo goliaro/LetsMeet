@@ -1,91 +1,19 @@
 # Let-sMeet-
 Let'sMeet!
 
-Documentation of our iOS App, Let’s Meet
-
 CS50 Final Project
-December 7, 2017
 Authors: Alejandro Gracia-Zhang, Gabriel Oliaro, Kit McArthur
 
-Welcome to the newest app on the block, Let's Meet! It's a tool that enables users to instantly find people with whom they can study, eat lunch, and do other activities -- all without worrying about bothering people who don’t happen to be available to study or hang out at the same time as you.
+Our iOS App was developed in Xcode, written in Swift.  Although none of us had ever learned Swift or had experience with making apps, we wanted to learn.  This project has two main components, the user interface frontend and the server backend.  For the server, we decided to use Firebase, a Backend-as-a-Server that is an app-development platform on Google Cloud Platform.  Firebase allowed us to not have to worry about managing servers and writing APIs.  Yet, despite the “relatively” streamlined procedures that it provided, there was still a lot to learn and implement.  Most of this project has been about teaching ourselves new languages, resources and databases, and then applying what we could learn in this very limited timeframe to building a functioning app.
 
-Let’s jump right in.
+The Xcode portion of this project offers a visual overview of how each element is interconnected. For example, in the “storyboard file,” we see the organization of each screen within the app, and how different buttons branch off into each screen. Behind each screen is Swift code, which specify behaviors of elements within the screens.
 
-Ways to navigate contents:
-1. Use table of contents
-2. Page search
+The very first part of the app are the Login and Register pages.  Firebase has a built-in email/password authentication system that we used.  This system keeps tracks of who the users are and even allows you to store an imageURL (although for this we also had to use the Firebase Database to actually be able to upload the image to allow users to store an image from their phones’ photo libraries).
 
-## Table of Contents
-Starting/Running the Application
-Register
-Your Groups
-Your Profile
-Create a New Group
-Add a New Member
-Group Information
-Members
-Remove a Member
-Leave/Delete Group
-Go to an Activity
-You Signed Up Successfully!
-Add to Calendar
-Send a Message
-Start a New Activity
-Add Start/End Times
+The next part, the Group Table View, displays the list of groups the user is in.  This page implements the table view to display the groups in a list.  These groups are retrieved from the Firebase Database where there is a specific dictionary “users,” the sole purpose of which is to keep a list of user keys, and under each user key have a list of the groups that user is in.  Through Getting the user’s unique key from FirebaseAuth, and with a reference to the specific location where the “users” dictionary is, the GroupTableViewController can retrieve the unique keys of the groups the user is in. However, these are only the names of the groups.  (Note that this list of “users” is not used for login or authentication; those functions are done directly through FirebaseAuth). After getting the names, we need to get the full info from the “groups” node in database in this dictionary.  Within each group is stored a unique key along with all of the other requisite variables such as name, photo, description, list of members, and list of activities.
 
+When the specific group on the list is tapped, the Group View Controller is opened.  This displays not just the information of the group but also what activities are within that group.  These activities are stored in the list of activities mentioned previously.  On the top right of the page, there this a button that says, “View/Edit Members.” This brings you to another page with a list of all of the members in the group.  There are also buttons to “add” and “remove” members.  To add a user, the email of that user is entered and then a query into the “users” dictionary in Firebase is made to get the UID of the user that has that email.  This is what the button “Lookup and Add” first does. After this, the user is added to the list of members on the group.  This isn’t it though. The addmember function must also add the key of the group to the list of groups under the “users” dictionary.  This way, next time the GroupViewController is loaded, the app will know to automatically also get the group that the user was just added to.  There is also a remove members button; however, only the owner of the group (the one who first created it) can remove members.
 
-## Starting/Running the Application
-Because it costs $99 to have an iOS Developer Certificate, our app has not been put on the App Store for the public.  However, running it directly from Xcode from an Apple computer allows it to function exactly as if it had been downloaded from the App Store.Open the “Let’s Meet.xcworkspace” file and choose the simulator or device to run the app on.   Tap (or click if using the simulator) on the app to open it and you will see the login page.  If you already have an account, enter the email and password you used to sign in.  If you are new, simply tap the register button near the bottom of the screen.
+One problem we routinely encountered was that we had difficulty incorporating Firebase with Xcode.  For us, they were two entirely new languages and there wasn’t really anyone we could easily ask questions to about this.  We went through a few online tutorials and video tutorials; however, there were a few errors and bugs in the last couple of days that were related to using Firebase.  Although we were able to successfully implement the Authentication and Login of users through Firebase, we were not able to get the groups from Firebase to show as a list on the app on the GroupTableViewController.
 
-## Register
-On this page, there are various blank fields for you to fill: name, email, password (minimum of six characters), and confirm password, as well as a place to upload a profile photo from your device. You won’t be able to proceed unless each field is filled. A profile photo is not necessary to continue. One you’re ready to proceed, selecting “Done” will lead you to the “Your Groups” page.
-
-## Your Groups (2)
-The “Your Groups” page shows you a list of the groups you are in.  These could be roommates you might get lunch with, friends you want to hang out with or, most importantly, people you can do a last-minute pset with.  As a member of the group, you can add more members, but only the owner of the group (the one who first made the group) can remove members.  A typical scenario for using this app would be in a large class, especially in the beginning of the semester, when students still don’t know each other. The professor or the Head TF can add everyone in the class into a group allowing you as a member of the class to be able to connect with your classmates and meet for specific activities such as working on psets.
-On the top of this page, there is also a profile button (to view your own profile) and a “+” button to create new groups.  If you tap one of the groups in the list of groups, this will lead you to a page with the info for that specific group, including members in the group and activities in the group.
-
-## Your Profile
-There are no fields for user input here, just a display of your profile picture, your name, and your email.
-
-## Create a New Group
-There is a field for the name of your new group, an optional description field, and an option to add an image from your device’s camera roll.
-Once the group is created, a pop-up menu inquires about whether or not you’d like to add a member. Selecting it will bring you to the “Add a New Member” page, while
-
-## Add a New Member
-There is a field to enter the email of the individual whom you wish to add to the group.
-
-## Group Information
-When you tap a group in the “Your Groups” page, this opens up a page with the Group Information. Here, you can see the activities that are in the group.  For example, if this is a study group, the activities could include specific psets or reviewing specific concepts.  As a member of the group, you can either join an existing activity or create a new one.  From this Group Information page, you can also tap on Members to view members in the group.
-
-## Members
-On this page, you are able to see the names and usernames of members of a particular group. You’re given options to add or remove members, as well as leave/delete the group.
-
-## Remove a Member
-Only the creator of the group can remove members.
-
-## Add a New Member
-See documentation above (Create a New Group > Add a New Member).
-
-## Leave/Delete Group
-Only the owner can delete a group, while any member can leave the group if he or she so wishes to.
-
-## Go to an Activity
-This page appears after you’ve selected an activity in which you’d like to participate. It gives more specific details of the activity: place, description, as well as starting and ending times. Below this is the button “Can Go!,” which activates the main feature of the app, and leads you to others ready for the same activity!
-
-## You Signed Up Successfully!
-You can now see all of the other users who are ready for the activity. This page gives options to add the activity to your calendar, and send a message to others participating.
-
-## Add to Calendar
-This button on the top of the “Go to an Activity” page lets you add the activity to the calendar on your phone.  Since each activity has a start and end time associated it, it adds the name, description and location of the activity in the exact slot of time the activity takes place during
-## Send a Message
-This opens the phone’s email app to send an email to all of the members within the activity.
-
-## Start a New Activity
-This is the page to create a new activity for the group.  You can either choose a previous activity from a scroll menu, or you can type in the name of a new activity.  You also can add a description of the activity and a place if you want.  Finally, there is a button that opens a page to allow you to specify the time and date during which the activity will happen.
-
-## Add Start/End Times
-Here, you pick the start time and end time. Press “Start” and the activity is made and added to the group!  (You automatically are in this activity).
-
-
-
-
+In these past few weeks, we were able to successfully implement the user interface for the app, and connect a few of its aspects to a realtime database.  However, because of the tight time limits and also lack of people to talk to about Firebase and iOS app development, we ended up learning this completely on our own and therefore were not able to add and implement all of the features we had originally wanted.  Looking back, we were quite unprepared for this project, having no experience in the languages we worked in or in Firebase, and also having the goal of implementing an app with complex database dictionaries and various features.  Nonetheless, this journey has been very rewarding and with more time, we are confident that we would have a good shot at improving the functionality our Let’s Meet app. After all, one of the main takeaways from this has also been that while on paper ideas and features may seem quite simple, implementing these ideas into code takes much much more time, knowledge, and experience than what we might initially think.
