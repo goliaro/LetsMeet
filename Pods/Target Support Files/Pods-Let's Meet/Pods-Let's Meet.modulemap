@@ -1,6 +1,0 @@
-framework module Pods_Let_s_Meet {
-  umbrella header "Pods-Let's Meet-umbrella.h"
-
-  export *
-  module * { export * }
-}

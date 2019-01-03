@@ -7,15 +7,10 @@
 //
 
 import UIKit
-import Firebase
 
 class AddMemberToGroupViewController: UIViewController, UITextFieldDelegate {
 
     var group_key: String?
-    var refUsers: FIRDatabaseReference!
-    var refGroupMembers: FIRDatabaseReference!
-    var refUserGroups: FIRDatabaseReference!
-    var refHandle: UInt!
     
     
     @IBOutlet weak var EmailTextField: UITextField!
@@ -56,39 +51,7 @@ class AddMemberToGroupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func lookupAndAdd(_ sender: UIButton) {
-        
-        self.refUsers = FIRDatabase.database().reference().child("users")
-        refHandle = refUsers.observe(.childAdded, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                
-                let current_email = dictionary["email"] as! String
-                
-                if current_email == self.EmailTextField.text
-                {
-                    
-                    let user_id = dictionary["id"] as! String
-                    
-                    // Add the user to the group
-                    self.refGroupMembers = FIRDatabase.database().reference().child("groups/\(self.group_key!)/members")
-                    let member_key = self.self.refGroupMembers.childByAutoId().key
-                    var member = ["id": user_id]
-                    
-                    self.refGroupMembers.child(member_key).setValue(member)
-                    
-                    // Add the group to the groups list of the user
-                    self.refUserGroups = FIRDatabase.database().reference().child("users/\(user_id)/groups")
-                    let group_key_user = self.refUserGroups.childByAutoId().key
-                    var group2 = ["id": self.group_key]
-                    
-                    self.refUserGroups.child(group_key_user).setValue(group2)
-                    
-                    self.ResultTextField.text = "The user was added to the group"
-                }
-            }
-            
-        }, withCancel: nil)
-        
+       
         
 
         

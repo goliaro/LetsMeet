@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import Foundation
 
 
@@ -26,30 +25,7 @@ class ProfileViewController: UIViewController {
         
         // Reference to an image file in Firebase Storage
         
-        let user = FIRAuth.auth()!.currentUser
         
-        let string = "users_profile_pictures/" + (user?.uid)! + ".png"
-        let reference = FIRStorage.storage().reference(withPath: string)
-        
-        // UIImageView in your ViewController
-        let imageView: UIImageView = self.profilePictureImageView
-        
-        // Placeholder image
-        let placeholderImage = UIImage(named: "defaultPhoto.jpg")
-        
-        
-        
-        
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        
-        reference.data(withMaxSize: 1 * 1024 * 1024) { (data, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                let myImage: UIImage! = UIImage(data: data!)
-                self.profilePictureImageView.image = myImage
-            }
-        }
         
         
     }

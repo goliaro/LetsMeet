@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		97E5E49E3D89C7D339665BE4 /* Pods_Let_s_MeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009A774415F018A5C65514F1 /* Pods_Let_s_MeetTests.framework */; };
 		D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557EF0B1FD457650087B474 /* GroupViewController.swift */; };
 		D557EF0E1FD464200087B474 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557EF0D1FD464200087B474 /* Activity.swift */; };
 		D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B27471FD0F1510091648F /* AppDelegate.swift */; };
@@ -28,15 +27,12 @@
 		E0166FAD1FD666B600D905F7 /* GroupMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */; };
 		E01A6E4E1FD6E3ED00BA1B7D /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */; };
 		E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */; };
-		E047DFC31FD7E2D1008634DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */; };
 		E047DFC51FD7ECBB008634DD /* Login_RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */; };
 		E08E213321DA1B2E0095DCC4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 		E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
-		E6EE8447A965686D63319232 /* Pods_Let_s_Meet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */; };
-		F521096966F2F88A25DD60EF /* Pods_Let_s_MeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,14 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		009A774415F018A5C65514F1 /* Pods_Let_s_MeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_MeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D80C2E01FD7AE580088297F /* Let's Meet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Let's Meet.entitlements"; sourceTree = "<group>"; };
-		11B807F41BF231B567A34512 /* Pods-Let's MeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetUITests/Pods-Let's MeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_Meet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E3E09F44FF3607BFF19B34A /* Pods-Let's MeetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetTests/Pods-Let's MeetTests.debug.xcconfig"; sourceTree = "<group>"; };
-		733994EBBC7A5805C22EA86D /* Pods-Let's MeetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetTests/Pods-Let's MeetTests.release.xcconfig"; sourceTree = "<group>"; };
-		AA2E0E258A413B24337776CE /* Pods-Let's Meet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Meet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet.release.xcconfig"; sourceTree = "<group>"; };
-		B55E669B57F64D82D5DD2566 /* Pods-Let's MeetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetUITests/Pods-Let's MeetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D557EF0B1FD457650087B474 /* GroupViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D557EF0D1FD464200087B474 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D56B27441FD0F1510091648F /* Let's Meet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let's Meet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,15 +80,12 @@
 		E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewCell.swift; sourceTree = "<group>"; };
 		E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
 		E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController2.swift; sourceTree = "<group>"; };
-		E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_RegisterViewController.swift; sourceTree = "<group>"; };
 		E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		E947F72A37DF7C0227CDCC96 /* Pods-Let's Meet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Meet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet.debug.xcconfig"; sourceTree = "<group>"; };
-		FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_MeetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6EE8447A965686D63319232 /* Pods_Let_s_Meet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97E5E49E3D89C7D339665BE4 /* Pods_Let_s_MeetTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,32 +107,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F521096966F2F88A25DD60EF /* Pods_Let_s_MeetUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C7D99A45C4D93009AF500A4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E947F72A37DF7C0227CDCC96 /* Pods-Let's Meet.debug.xcconfig */,
-				AA2E0E258A413B24337776CE /* Pods-Let's Meet.release.xcconfig */,
-				4E3E09F44FF3607BFF19B34A /* Pods-Let's MeetTests.debug.xcconfig */,
-				733994EBBC7A5805C22EA86D /* Pods-Let's MeetTests.release.xcconfig */,
-				11B807F41BF231B567A34512 /* Pods-Let's MeetUITests.debug.xcconfig */,
-				B55E669B57F64D82D5DD2566 /* Pods-Let's MeetUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		AF8AD46A6C754CF72A8B814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */,
-				009A774415F018A5C65514F1 /* Pods_Let_s_MeetTests.framework */,
-				FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,7 +127,6 @@
 				D56B275B1FD0F1510091648F /* Let's MeetTests */,
 				D56B27661FD0F1510091648F /* Let's MeetUITests */,
 				D56B27451FD0F1510091648F /* Products */,
-				0C7D99A45C4D93009AF500A4 /* Pods */,
 				AF8AD46A6C754CF72A8B814E /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -178,7 +144,6 @@
 		D56B27461FD0F1510091648F /* Let's Meet */ = {
 			isa = PBXGroup;
 			children = (
-				E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */,
 				D56B27531FD0F1510091648F /* Info.plist */,
 				0D80C2E01FD7AE580088297F /* Let's Meet.entitlements */,
 				E08E213621DA35FE0095DCC4 /* Controller */,
@@ -258,12 +223,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D56B276C1FD0F1510091648F /* Build configuration list for PBXNativeTarget "Let's Meet" */;
 			buildPhases = (
-				FE3EDEAB68DA466184CE5631 /* [CP] Check Pods Manifest.lock */,
 				D56B27401FD0F1510091648F /* Sources */,
 				D56B27411FD0F1510091648F /* Frameworks */,
 				D56B27421FD0F1510091648F /* Resources */,
-				B31BEEE8A0BDA37B501C9869 /* [CP] Embed Pods Frameworks */,
-				7F1B28BFA24430F8FF45275A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -374,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56B27521FD0F1510091648F /* LaunchScreen.storyboard in Resources */,
-				E047DFC31FD7E2D1008634DD /* GoogleService-Info.plist in Resources */,
 				D56B274F1FD0F1510091648F /* Assets.xcassets in Resources */,
 				D56B274D1FD0F1510091648F /* Main.storyboard in Resources */,
 			);
@@ -445,21 +406,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's MeetTests/Pods-Let's MeetTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F1B28BFA24430F8FF45275A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9C8F88EB62B682DBC63568AD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,21 +419,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's MeetUITests/Pods-Let's MeetUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B31BEEE8A0BDA37B501C9869 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B9F41657094D250EE6A1836D /* [CP] Copy Pods Resources */ = {
@@ -517,24 +448,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Let's MeetTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FE3EDEAB68DA466184CE5631 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Let's Meet-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -720,7 +633,6 @@
 		};
 		D56B276D1FD0F1510091648F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E947F72A37DF7C0227CDCC96 /* Pods-Let's Meet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Let's Meet/Let's Meet.entitlements";
@@ -738,7 +650,6 @@
 		};
 		D56B276E1FD0F1510091648F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA2E0E258A413B24337776CE /* Pods-Let's Meet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Let's Meet/Let's Meet.entitlements";
@@ -756,7 +667,6 @@
 		};
 		D56B27701FD0F1510091648F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E3E09F44FF3607BFF19B34A /* Pods-Let's MeetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -771,7 +681,6 @@
 		};
 		D56B27711FD0F1510091648F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 733994EBBC7A5805C22EA86D /* Pods-Let's MeetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -786,7 +695,6 @@
 		};
 		D56B27731FD0F1510091648F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11B807F41BF231B567A34512 /* Pods-Let's MeetUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Let's MeetUITests/Info.plist";
@@ -800,7 +708,6 @@
 		};
 		D56B27741FD0F1510091648F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B55E669B57F64D82D5DD2566 /* Pods-Let's MeetUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Let's MeetUITests/Info.plist";

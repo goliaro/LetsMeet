@@ -22,7 +22,6 @@
 import UIKit
 import os.log
 import Foundation
-import Firebase
 
 
 class GroupTableViewController: UITableViewController {

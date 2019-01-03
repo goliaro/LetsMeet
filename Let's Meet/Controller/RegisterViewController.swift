@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import Firebase
 
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -22,8 +21,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
     @IBOutlet weak var profilePhotoImageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
-    
-    var refUsers: FIRDatabaseReference!
     
     
     override func viewDidLoad() {
@@ -109,86 +106,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         }
 
         
-        else {
-            FIRAuth.auth()!.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {(user, error) in
-                
-                if error == nil
-                {
-                    // add name and photo to user
-                    // Firebase login
-                    
-                    // Saves the profile pictures in Firebase storage, in the folder users_profile_pictures, with the user UID as the name
-                    let storageRef = FIRStorage.storage().reference().child("users_profile_pictures/" + (user?.uid)! + ".png")
-                    if let uploadData = UIImagePNGRepresentation(self.profilePhotoImageView.image!) {
-                        storageRef.put(uploadData, metadata: nil) { (metadata, error) in
-                            if error != nil {
-                                print("error")
-                                
-                                // Show an alert message
-                                let alertController = UIAlertController(title: "Alert", message: "Could not upload the profile photo.", preferredStyle: .alert)
-                                let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                                    print("You've pressed OK");
-                                }
-                                alertController.addAction(OK_button)
-                                self.present(alertController, animated: true, completion: nil)
-                            } else {
-                                
-                            }
-                        }
-                    }
-                    
-                    
-                    
-                    FIRAuth.auth()!.signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) {(user, error) in
-                        
-                        // If the login is successfull
-                        if (error == nil)
-                        {
-                            // Save the profile name
-                            let changeRequest = FIRAuth.auth()!.currentUser?.profileChangeRequest()
-                            changeRequest?.displayName = self.nameTextField.text
-                            changeRequest?.commitChanges { (error) in
-                                if (error == nil) {
-                                    print("successfully changed the name")
-                                }
-                                else {
-                                    print("Could not save the name")
-                                }
-                            }
-                            
-                            self.refUsers = FIRDatabase.database().reference().child("users")
-                            
-                            let key = user?.uid
-                            let user = ["id": key, "name": self.nameTextField.text! as String, "email": self.emailTextField.text! as String ]
-                            
-                            self.refUsers.child(key!).setValue(user)
-                            
-                            // Show groups page
-                            self.performSegue(withIdentifier: "showGroupsTable", sender: nil)
-                        }
-                            // Login was not successfull
-                        else {
-                            // Show an alert message
-                            let alertController = UIAlertController(title: "Alert", message: "The login was not successful. Make sure your email and password are correct.", preferredStyle: .alert)
-                            let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                                print("You've pressed OK");
-                            }
-                            alertController.addAction(OK_button)
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                    }
-                    // go to groups
-                }
-                else {
-                    let alertController = UIAlertController(title: "Alert", message: error.debugDescription, preferredStyle: .alert)
-                    let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                        print("You've pressed OK");
-                    }
-                    alertController.addAction(OK_button)
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }
-        }
+        
+        
+        
+        
     }
     
     
