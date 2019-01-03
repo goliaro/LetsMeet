@@ -13,7 +13,7 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
     
-    @IBOutlet weak var EmailTextField: UITextField!
+    @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBAction func LoginButtonPressed(_ sender: UIButton) {
         
         // Firebase login
-        FIRAuth.auth()!.signIn(withEmail: EmailTextField.text!, password: PasswordTextField.text!) {(user, error) in
+        FIRAuth.auth()!.signIn(withEmail: UsernameTextField.text!, password: PasswordTextField.text!) {(user, error) in
             
             // If the login is successfull
             if (error == nil)

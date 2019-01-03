@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
                 print(error)
             } else {
                 let myImage: UIImage! = UIImage(data: data!)
-                profilePictureImageView.image = myImage
+                self.profilePictureImageView.image = myImage
             }
         }
         

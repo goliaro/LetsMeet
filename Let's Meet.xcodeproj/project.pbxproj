@@ -30,11 +30,11 @@
 		E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */; };
 		E047DFC31FD7E2D1008634DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */; };
 		E047DFC51FD7ECBB008634DD /* Login_RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */; };
+		E08E213321DA1B2E0095DCC4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 		E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
-		E0D6EE001FD8C1BE00D8632C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */; };
 		E6EE8447A965686D63319232 /* Pods_Let_s_Meet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378E54D687C7BCE7BED46D8F /* Pods_Let_s_Meet.framework */; };
 		F521096966F2F88A25DD60EF /* Pods_Let_s_MeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +65,7 @@
 		733994EBBC7A5805C22EA86D /* Pods-Let's MeetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetTests/Pods-Let's MeetTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA2E0E258A413B24337776CE /* Pods-Let's Meet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Meet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet.release.xcconfig"; sourceTree = "<group>"; };
 		B55E669B57F64D82D5DD2566 /* Pods-Let's MeetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's MeetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's MeetUITests/Pods-Let's MeetUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D557EF0B1FD457650087B474 /* GroupViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; name = GroupViewController.swift; path = ../GroupViewController.swift; sourceTree = "<group>"; };
+		D557EF0B1FD457650087B474 /* GroupViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D557EF0D1FD464200087B474 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D56B27441FD0F1510091648F /* Let's Meet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let's Meet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56B27471FD0F1510091648F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,11 +93,11 @@
 		E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController2.swift; sourceTree = "<group>"; };
 		E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_RegisterViewController.swift; sourceTree = "<group>"; };
+		E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "../../../Let-sMeet- copy/Let's Meet/Let's Meet/ProfileViewController.swift"; sourceTree = "<group>"; };
 		E947F72A37DF7C0227CDCC96 /* Pods-Let's Meet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Meet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Meet/Pods-Let's Meet.debug.xcconfig"; sourceTree = "<group>"; };
 		FB78D43BC84C58C77948E019 /* Pods_Let_s_MeetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_MeetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -178,33 +178,12 @@
 		D56B27461FD0F1510091648F /* Let's Meet */ = {
 			isa = PBXGroup;
 			children = (
-				0D80C2E01FD7AE580088297F /* Let's Meet.entitlements */,
-				D56B27471FD0F1510091648F /* AppDelegate.swift */,
-				D56B27491FD0F1510091648F /* ViewController.swift */,
-				E0AB9A741FD59F82005E4C0A /* Person.swift */,
-				E001EE141FD93CE10027B585 /* User.swift */,
-				D5D531201FD2F80700A54464 /* Group.swift */,
-				D56B27751FD0F2510091648F /* GroupTableViewCell.swift */,
-				D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */,
-				D557EF0B1FD457650087B474 /* GroupViewController.swift */,
-				D557EF0D1FD464200087B474 /* Activity.swift */,
-				E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */,
-				E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */,
-				E0100C5A1FD7934800726B87 /* ActivityViewController2.swift */,
-				E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */,
-				E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */,
-				E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */,
-				E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */,
-				E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */,
-				E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */,
-				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
-				D56B274B1FD0F1510091648F /* Main.storyboard */,
-				E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */,
-				E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */,
-				E0D6EDFF1FD8C1BE00D8632C /* ProfileViewController.swift */,
 				E047DFC21FD7E2D1008634DD /* GoogleService-Info.plist */,
 				D56B27531FD0F1510091648F /* Info.plist */,
-				D56B274E1FD0F1510091648F /* Assets.xcassets */,
+				0D80C2E01FD7AE580088297F /* Let's Meet.entitlements */,
+				E08E213621DA35FE0095DCC4 /* Controller */,
+				E08E213421DA35C20095DCC4 /* Model */,
+				E08E213521DA35D80095DCC4 /* View */,
 			);
 			path = "Let's Meet";
 			sourceTree = "<group>";
@@ -225,6 +204,51 @@
 				D56B27691FD0F1510091648F /* Info.plist */,
 			);
 			path = "Let's MeetUITests";
+			sourceTree = "<group>";
+		};
+		E08E213421DA35C20095DCC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0AB9A741FD59F82005E4C0A /* Person.swift */,
+				E001EE141FD93CE10027B585 /* User.swift */,
+				D5D531201FD2F80700A54464 /* Group.swift */,
+				D557EF0D1FD464200087B474 /* Activity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E08E213521DA35D80095DCC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D56B27501FD0F1510091648F /* LaunchScreen.storyboard */,
+				D56B274B1FD0F1510091648F /* Main.storyboard */,
+				D56B274E1FD0F1510091648F /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E08E213621DA35FE0095DCC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D56B27471FD0F1510091648F /* AppDelegate.swift */,
+				D56B27491FD0F1510091648F /* ViewController.swift */,
+				D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */,
+				D557EF0B1FD457650087B474 /* GroupViewController.swift */,
+				E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */,
+				E0100C5A1FD7934800726B87 /* ActivityViewController2.swift */,
+				E0166FAA1FD663FB00D905F7 /* GroupMembersViewController.swift */,
+				D56B27751FD0F2510091648F /* GroupTableViewCell.swift */,
+				E013FBA81FD5FEE500BCA2C3 /* ActivityTableViewCell.swift */,
+				E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */,
+				E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */,
+				E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */,
+				E047DFC41FD7ECBB008634DD /* Login_RegisterViewController.swift */,
+				E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */,
+				E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */,
+				E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */,
+				E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,11 +554,11 @@
 				E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */,
 				E047DFC51FD7ECBB008634DD /* Login_RegisterViewController.swift in Sources */,
 				E0166FAB1FD663FB00D905F7 /* GroupMembersViewController.swift in Sources */,
+				E08E213321DA1B2E0095DCC4 /* ProfileViewController.swift in Sources */,
 				D56B27761FD0F2510091648F /* GroupTableViewCell.swift in Sources */,
 				D557EF0E1FD464200087B474 /* Activity.swift in Sources */,
 				D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */,
 				D56B274A1FD0F1510091648F /* ViewController.swift in Sources */,
-				E0D6EE001FD8C1BE00D8632C /* ProfileViewController.swift in Sources */,
 				E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */,
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
