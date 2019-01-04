@@ -18,11 +18,12 @@ func getPostString(params:[String:Any]) -> String
     return data.map { String($0) }.joined(separator: "&")
 }
 
+var UUsername: String?
+
 struct UserInfo: Codable {
     var name: String
     var username: String
     var email: String
-    var picture_url: String
 }
 
 // cookies functions from https://stackoverflow.com/questions/43980588/how-to-save-cookies-in-shared-preferences-in-ios
@@ -101,7 +102,7 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func login(post_params: [String:Any], url:String)
+    func login(post_params: [String:Any], url:String) -> Bool
     {
         //restoreCookies()
         eraseCookies()
@@ -139,6 +140,7 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
             
         }
         task.resume()
+        return true
     }
     
     // MARK: Actions
@@ -155,8 +157,11 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         let login_params:[String:String] = ["username": UsernameTextField.text!, "password": PasswordTextField.text!]
-        login(post_params: login_params, url: "https://www.gabrieleoliaro.it/db/login.php")
-        
+        if login(post_params: login_params, url: "https://www.gabrieleoliaro.it/db/login.php")
+        {
+            UUsername = UsernameTextField.text!
+            performSegue(withIdentifier: "showGroupsTable", sender: sender)
+        }
     }
     
 

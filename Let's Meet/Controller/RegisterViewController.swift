@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func register(param: [String:String]?, username: String, uploadUrl: URL, imageView: UIImageView)
+    func register(param: [String:String]?, username: String, uploadUrl: URL, imageView: UIImageView) -> Bool
     {
         eraseCookies()
         var request = URLRequest(url: uploadUrl);
@@ -95,7 +95,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         
         let imageasdata = UIImageJPEGRepresentation(imageView.image!, 1)
         if (imageasdata == nil) {
-            return
+            return false
         }
         
         request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageasdata!, boundary: boundary, username: username)
@@ -118,14 +118,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
                 // main thread
                 DispatchQueue.main.async {
                     self.showAlertView(error_message: dataResponse)
+                    
                 }
-                return
+                return 
             }
             
             storeCookies()
             print(dataResponse)
         }
         task.resume()
+        return true
     }
     
     
@@ -177,7 +179,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         //register(post_params: register_params, url: "https://www.gabrieleoliaro.it/db/register_new.php")
         
         let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/register_new.php")
-        register(param: register_params, username: usernameTextField.text!, uploadUrl: webservice_URL!, imageView: profilePhotoImageView)
+        if register(param: register_params, username: usernameTextField.text!, uploadUrl: webservice_URL!, imageView: profilePhotoImageView)
+        {
+            performSegue(withIdentifier: "showGroupsTable", sender: sender)
+        }
         
         
     }
