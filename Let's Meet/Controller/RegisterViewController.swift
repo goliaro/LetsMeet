@@ -9,45 +9,6 @@
 import UIKit
 import Foundation
 
-func imageUploadRequest(imageView: UIImageView, uploadUrl: URL, param: [String:String]?, username: String)
-{
-    var request = URLRequest(url: uploadUrl);
-    request.httpMethod = "POST"
-    let boundary = generateBoundaryString()
-    let config = URLSessionConfiguration.default
-    config.httpAdditionalHeaders = [
-        "Accept": "text/html",
-        "Content-Type": "multipart/form-data; boundary=\(boundary)",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
-        
-    ]
-    let session = URLSession(configuration: config)
-    
-    let imageasdata = UIImageJPEGRepresentation(imageView.image!, 1)
-    if (imageasdata == nil) {
-        return
-    }
-    
-    request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageasdata!, boundary: boundary, username: username)
-    
-    //myActivityIndicator.startAnimating();
-    print("printing request now")
-    print(request)
-    
-    let task = session.dataTask(with: request) { data, response, error in
-        guard error == nil && data != nil else {
-            print(error)
-            return
-        }
-        print(response)
-        guard let dataResponse = String(data: data!, encoding: .utf8), error == nil else {
-            print(error?.localizedDescription ?? "Response Error")
-            return
-        }
-        print(dataResponse)
-    }
-    task.resume()
-}
 
 extension Data {
     mutating func append(string: String) {
@@ -58,6 +19,7 @@ extension Data {
     }
 }
 
+//credits: https://stackoverflow.com/questions/26335656/how-to-upload-images-to-a-server-in-ios-with-swift?noredirect=1&lq=1
 func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: Data, boundary: String, username: String) -> Data {
     var body = Data()
     
@@ -116,6 +78,58 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func register(param: [String:String]?, username: String, uploadUrl: URL, imageView: UIImageView)
+    {
+        eraseCookies()
+        var request = URLRequest(url: uploadUrl);
+        request.httpMethod = "POST"
+        let boundary = generateBoundaryString()
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Accept": "text/html",
+            "Content-Type": "multipart/form-data; boundary=\(boundary)",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36" // otherwise the server doesn't let us upload images
+            
+        ]
+        let session = URLSession(configuration: config)
+        
+        let imageasdata = UIImageJPEGRepresentation(imageView.image!, 1)
+        if (imageasdata == nil) {
+            return
+        }
+        
+        request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageasdata!, boundary: boundary, username: username)
+        
+        print("printing request now")
+        print(request)
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard error == nil && data != nil else {
+                print(error)
+                return
+            }
+            print(response)
+            guard let dataResponse = String(data: data!, encoding: .utf8), error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                return
+            }
+            if (dataResponse != "Your registration was successful")
+            {
+                // main thread
+                DispatchQueue.main.async {
+                    self.showAlertView(error_message: dataResponse)
+                }
+                return
+            }
+            
+            storeCookies()
+            print(dataResponse)
+        }
+        task.resume()
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -163,7 +177,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         //register(post_params: register_params, url: "https://www.gabrieleoliaro.it/db/register_new.php")
         
         let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/register_new.php")
-        imageUploadRequest(imageView: profilePhotoImageView, uploadUrl: webservice_URL!, param: register_params, username: usernameTextField.text!)
+        register(param: register_params, username: usernameTextField.text!, uploadUrl: webservice_URL!, imageView: profilePhotoImageView)
         
         
     }
