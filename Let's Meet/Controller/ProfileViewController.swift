@@ -85,7 +85,8 @@ class ProfileViewController: UIViewController {
     func downloadImage()
     {
         // download the profile picture
-        let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/profile_pictures/" + UUsername! + ".jpg"
+        let username_safe = UUsername!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/profile_pictures/" + username_safe + ".jpg"
         print("imagelocation:" + imageLocation)
         guard let imageUrl = URL(string: imageLocation) else {
             print("Cannot create URL")

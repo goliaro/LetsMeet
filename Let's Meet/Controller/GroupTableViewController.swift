@@ -116,7 +116,8 @@ class GroupTableViewController: UITableViewController {
         var returnimage = UIImage(named: "defaultPhoto")!
         
         // download the profile picture
-        let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/groups_pictures/" + groupname + ".jpg"
+        let groupname_safe = groupname.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/groups_pictures/" + groupname_safe + ".jpg"
         print("imagelocation:" + imageLocation)
         guard let imageUrl = URL(string: imageLocation) else {
             print("Cannot create URL")
