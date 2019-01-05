@@ -81,6 +81,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
     func register(param: [String:String]?, username: String, uploadUrl: URL, imageView: UIImageView) -> Bool
     {
         eraseCookies()
+     
+        // this mutex will be used to make sure that we don't return a value until the datatask is actually done
+        let local_mutex = Mutex()
+        local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
+        
+        var toreturn = false
+        
         var request = URLRequest(url: uploadUrl);
         request.httpMethod = "POST"
         let boundary = generateBoundaryString()
@@ -95,7 +102,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         
         let imageasdata = UIImageJPEGRepresentation(imageView.image!, 1)
         if (imageasdata == nil) {
-            return false
+            
+            local_mutex.unlock()
+            return toreturn
         }
         
         request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageasdata!, boundary: boundary, username: username)
@@ -106,28 +115,47 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         let task = session.dataTask(with: request) { data, response, error in
             guard error == nil && data != nil else {
                 print(error)
+                
+                // done with the datatask (failed), so unlock the mutex
+                local_mutex.unlock()
+                
                 return
             }
+            
             print(response)
+            
             guard let dataResponse = String(data: data!, encoding: .utf8), error == nil else {
                 print(error?.localizedDescription ?? "Response Error")
+                
+                // done with the datatask (failed), so unlock the mutex
+                local_mutex.unlock()
+                
                 return
             }
+            
+            print(dataResponse)
             if (dataResponse != "Your registration was successful")
             {
                 // main thread
                 DispatchQueue.main.async {
                     self.showAlertView(error_message: dataResponse)
-                    
                 }
-                return 
+            }
+            else {
+                // Success!
+                storeCookies()
+                toreturn = true
             }
             
-            storeCookies()
-            print(dataResponse)
+            local_mutex.unlock()
         }
+        
         task.resume()
-        return true
+        
+        // Aquire the lock right before returning, to make sure that we are actually done with the dataTask
+        local_mutex.lock()
+        
+        return toreturn
     }
     
     
@@ -179,6 +207,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         //register(post_params: register_params, url: "https://www.gabrieleoliaro.it/db/register_new.php")
         
         let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/register_new.php")
+        
         if register(param: register_params, username: usernameTextField.text!, uploadUrl: webservice_URL!, imageView: profilePhotoImageView)
         {
             performSegue(withIdentifier: "showGroupsTable", sender: sender)

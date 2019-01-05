@@ -9,6 +9,11 @@
 import UIKit
 import Foundation
 
+struct UserInfo: Codable {
+    var name: String
+    var username: String
+    var email: String
+}
 
 
 class ProfileViewController: UIViewController {
@@ -58,14 +63,14 @@ class ProfileViewController: UIViewController {
             do {
                 //here dataResponse received from a network request
                 let decoder = JSONDecoder()
-                let model = try decoder.decode([UserInfo].self, from:
+                let user = try decoder.decode([UserInfo].self, from:
                     dataResponse) //Decode JSON Response Data
-                print(model[0])
+                print(user[0])
                 
                 DispatchQueue.main.async {
-                    self.NameTextField.text = model[0].name as! String?
-                    self.UsernameTextField.text = model[0].username as! String?
-                    self.EmailTextField.text = model[0].email as! String?
+                    self.NameTextField.text = user[0].name as String?
+                    self.UsernameTextField.text = user[0].username as String?
+                    self.EmailTextField.text = user[0].email as String?
                 }
                 
             } catch let parsingError {

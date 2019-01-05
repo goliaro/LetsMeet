@@ -23,45 +23,117 @@ import UIKit
 import os.log
 import Foundation
 
+struct GroupInfo: Codable {
+    var name: String
+    var description: String
+    var owner: String
+}
+
+
 
 class GroupTableViewController: UITableViewController {
     
     //MARK: Properties
-    var groups = [Group]() // This creates the array of objects Groups
+    var groups = [GroupInfo]() // This creates the array of objects Groups
     //var users = [User]()
     
-    //var refUsers: FIRDatabaseReference!
-    //var refGroups: FIRDatabaseReference!
-    //var refHandle: UInt!
+    func showAlertView(error_message: String)
+    {
+        // Show an alert message
+        let alertController = UIAlertController(title: "Alert", message: error_message, preferredStyle: .alert)
+        let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            //print("You've pressed OK");
+        }
+        alertController.addAction(OK_button)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func downloadGroups()
+    {
+        restoreCookies()
+        
+        // dowload the data
+        let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/get_groups.php")
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        let session = URLSession(configuration: config)
+        var request = URLRequest(url: webservice_URL!)
+        request.httpMethod = "GET"
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            print(response)
+            
+            guard let dataResponse = data, error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                return
+            }
+            print(dataResponse)
+            do {
+                //here dataResponse received from a network request
+                let decoder = JSONDecoder()
+                self.groups = try decoder.decode([GroupInfo].self, from:
+                    dataResponse) //Decode JSON Response Data
+                print(self.groups)
+                
+                DispatchQueue.main.async {
+                    
+                }
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+                return
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func downloadGroupImage(groupname: String) -> UIImage
+    {
+        //restoreCookies()
+        // download the profile picture
+        let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/groups_pictures/" + groupname + ".jpg"
+        print("imagelocation:" + imageLocation)
+        guard let imageUrl = URL(string: imageLocation) else {
+            print("Cannot create URL")
+            return UIImage(named: "defaultPhoto")!
+        }
+        var returnimage = UIImage(named: "defaultPhoto")!
+        let image_task = URLSession.shared.downloadTask(with: imageUrl) {(location, response, error) in
+            guard let location = location else {
+                print("location is nil")
+                return
+            }
+            print(location)
+            let imageData = try! Data(contentsOf: location)
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                if (image != nil) {
+                    returnimage = image!
+                }
+            }
+        }
+        image_task.resume()
+        DispatchQueue.main.async {
+            return returnimage
+        }
+        return returnimage
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //mutex_signin.lock()
+        downloadGroups()
+        //mutex_signin.unlock()
         // Load the sample data by calling the private function loadSampleGroups() defined at the end of this page
-        loadSampleGroups()
+        //loadSampleGroups()
         
-        /*
-        let userID = FIRAuth.auth()!.currentUser?.uid
-        refUsers = FIRDatabase.database().reference().child("users/")
         
-        FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let user = User()
-            
-                user.setValuesForKeys(dictionary)
-                self.users.append(user)
-            }
-            
-            
-                //self.tableView.reloadData()
-            
-            
-            
-            
-        }, withCancel: nil)
-
-    */
         
     }
     
@@ -100,7 +172,7 @@ class GroupTableViewController: UITableViewController {
         let group = groups[indexPath.row]
         
         cell.groupNameLabel.text = group.name
-        cell.groupPhotoImageView.image = group.photo
+        cell.groupPhotoImageView.image = downloadGroupImage(groupname: group.name)
         cell.groupDescriptionLabel.text = group.description
         
         return cell
@@ -173,7 +245,7 @@ class GroupTableViewController: UITableViewController {
             }
             
             let selectedGroup = groups[indexPath.row]
-            groupDetailedViewController.group = selectedGroup
+            //groupDetailedViewController.group = selectedGroup
         
         case "newGroup":
             os_log("Adding a new group.", log: OSLog.default, type: .debug)
@@ -188,7 +260,7 @@ class GroupTableViewController: UITableViewController {
     //MARK: Private Methods
     
     // This function will load for the demo the 4 sample group whose images are saved into the Assets.xcassets
-    private func loadSampleGroups() {
+    /*private func loadSampleGroups() {
         
         // Declare a constant for each image in Assets.xcassets
         let photo1 = UIImage(named: "CS 50")
@@ -223,7 +295,7 @@ class GroupTableViewController: UITableViewController {
         group4.recent_activities = recent_activities_sample
         
         groups += [group1, group2, group3, group4]
-    }
+    }*/
 
 
 }

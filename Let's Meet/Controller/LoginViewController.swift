@@ -20,11 +20,6 @@ func getPostString(params:[String:Any]) -> String
 
 var UUsername: String?
 
-struct UserInfo: Codable {
-    var name: String
-    var username: String
-    var email: String
-}
 
 // cookies functions from https://stackoverflow.com/questions/43980588/how-to-save-cookies-in-shared-preferences-in-ios
 func storeCookies() {
@@ -104,13 +99,20 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
     
     func login(post_params: [String:Any], url:String) -> Bool
     {
-        //restoreCookies()
+        // this mutex will be used to make sure that we don't return a value until the datatask is actually done
+        let local_mutex = Mutex()
+        local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
+        
+        // remove cookies from previous sessions
         eraseCookies()
+        
         let webservice_URL = URL(string: url)
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = ["Accept": "text/html",
                                         "Content-Type": "application/x-www-form-urlencoded"
         ]
+        
+        var toreturn = false
         
         let session = URLSession(configuration: config)
         var request = URLRequest(url: webservice_URL!)
@@ -124,23 +126,41 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
             
             guard let dataResponse = String(data: data!, encoding: .utf8), error == nil else {
                 print(error?.localizedDescription ?? "Response Error")
+                
+                // done with the datatask (failed), so unlock the mutex
+                local_mutex.unlock()
+                //print("toreturn: "); print(toreturn); print("\n")
                 return
             }
+            
+            print("dataResponse: " + dataResponse + "\n")
+            
             if (dataResponse != "success_login." && dataResponse != "success_cookie")
             {
                 // main thread
                 DispatchQueue.main.async {
                     self.showAlertView(error_message: dataResponse)
                 }
-                return
+                
             }
-            print(dataResponse)
-            storeCookies()
+            else {
+                // Success!
+                storeCookies()
+                toreturn = true
+            }
             
+            print("toreturn: "); print(toreturn); print("\n")
+            
+            // we should be all done with the dataTask once we get here. No matter if we succeeded or failed
+            local_mutex.unlock()
             
         }
         task.resume()
-        return true
+        
+        // Aquire the lock right before returning, to make sure that we are actually done with the dataTask
+        local_mutex.lock()
+        
+        return toreturn
     }
     
     // MARK: Actions
@@ -157,11 +177,13 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         let login_params:[String:String] = ["username": UsernameTextField.text!, "password": PasswordTextField.text!]
+        
         if login(post_params: login_params, url: "https://www.gabrieleoliaro.it/db/login.php")
         {
             UUsername = UsernameTextField.text!
             performSegue(withIdentifier: "showGroupsTable", sender: sender)
         }
+        
     }
     
 
