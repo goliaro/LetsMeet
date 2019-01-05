@@ -3,11 +3,10 @@
 //  Let's Meet
 //
 //  Created by Oliaro, Gabriele on 12/3/17.
-//  Copyright © 2017 Kit, Alejandro & Gabriel. All rights reserved.
+//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
 //
 
 /*
- #cs50
  THIS IS OUR DATA MODEL
  
  As per the official Apple Developer Guide "Start Developing iOS Apps (Swift)":
@@ -23,7 +22,7 @@ import UIKit
 
 class Activity {
     
-    // #cs50 These are the basic variable names used to store the information of each single activity
+    // These are the basic variable names used to store the information of each single activity
     //MARK: Properties
     
     var name: String
@@ -31,13 +30,13 @@ class Activity {
     var ending_time: Date
     var participants_usernames: [String]
     
-    //#cs50 The location and descriptions are optional
+    // The location and descriptions are optional
     var description: String?
     var location: String?
     
     
     
-    // #cs50 These methods allow the initialization of the class Activity
+    // These methods allow the initialization of the class Activity
     //MARK: Initialization
     
     init?(name: String, starting_time: Date, ending_time: Date, description: String?, location: String?, participants_usernames: [String]) {

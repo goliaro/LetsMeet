@@ -3,7 +3,7 @@
 //  Let's Meet
 //
 //  Created by Gabriele Oliaro on 12/5/17.
-//  Copyright © 2017 Kit, Alejandro & Gabriel. All rights reserved.
+//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
 //
 
 import UIKit
@@ -51,7 +51,7 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // #cs50 When the user starts typing, scroll down the page using a scroll view, so that no textfield is covered by the keyboard.
+        // When the user starts typing, scroll down the page using a scroll view, so that no textfield is covered by the keyboard.
         scrollView.setContentOffset(CGPoint(x: 0, y: 175), animated: true)
     }
     
@@ -92,12 +92,12 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
         super.prepare(for: segue, sender: sender)
         
         
-        //#cs50 There is actually only one segue, so the code would work evern without the switch, but it's safer to include it in case a new segue is added in the future.
+        // There is actually only one segue, so the code would work evern without the switch, but it's safer to include it in case a new segue is added in the future.
         switch(segue.identifier ?? "") {
             
         case "goto_part2":
             
-            // #cs50 If the selected row in the picker view shows "New activity..." and the Name text field is empty, the user is not providing any valid name for the activity, so we need to fire an alert message.
+            // If the selected row in the picker view shows "New activity..." and the Name text field is empty, the user is not providing any valid name for the activity, so we need to fire an alert message.
             if ((activityNamePicker.selectedRow(inComponent: 0) == recent_activities!.count) && activityNameLabel.text == "")
             {
                 let alertController = UIAlertController(title: "Alert", message: "The name of the activity is missing!", preferredStyle: .alert)
@@ -111,7 +111,7 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
                 
             }
             
-            // #cs50 If the selected row in the picker view does not show "New activity..." and the Name text field is not empty, the user is providing two names for the same activity, which of course cannot be allowed
+            // If the selected row in the picker view does not show "New activity..." and the Name text field is not empty, the user is providing two names for the same activity, which of course cannot be allowed
             if ((activityNamePicker.selectedRow(inComponent: 0) < recent_activities!.count) && activityNameLabel.text != "")
             {
                 let alertController = UIAlertController(title: "Alert", message: "You specified two different names for the same activity", preferredStyle: .alert)

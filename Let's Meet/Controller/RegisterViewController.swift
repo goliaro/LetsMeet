@@ -3,7 +3,7 @@
 //  Let's Meet
 //
 //  Created by Gabriele Oliaro on 12/6/17.
-//  Copyright © 2017 Kit, Alejandro & Gabriel. All rights reserved.
+//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
 //
 
 import UIKit

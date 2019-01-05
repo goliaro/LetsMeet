@@ -3,11 +3,10 @@
 //  Let's Meet
 //
 //  Created by Oliaro, Gabriele on 12/3/17.
-//  Copyright © 2017 Kit, Alejandro & Gabriel. All rights reserved.
+//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
 //
 
 /*
- #cs50
  THIS IS OUR DATA MODEL
  
  As per the official Apple Developer Guide "Start Developing iOS Apps (Swift)":
@@ -23,7 +22,7 @@ import UIKit
 
 class Person {
     
-    // #cs50 These are the basic variable names used to store the information of each single person
+    // These are the basic variable names used to store the information of each single person
     //MARK: Properties
     
     var username: String // or user_id
@@ -32,7 +31,7 @@ class Person {
     var photo: UIImage?
     
     
-    // #cs50 These methods allow the initialization of the class Activity
+    // These methods allow the initialization of the class Activity
     //MARK: Initialization
     
     init?(username: String, password: String, name: String, photo: UIImage) {

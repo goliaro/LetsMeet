@@ -3,11 +3,11 @@
 //  Let's Meet
 //
 //  Created by Oliaro, Gabriele on 12/2/17.
-//  Copyright © 2017 Kit, Alejandro & Gabriel. All rights reserved.
+//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
 //
 
 /*
- #cs50
+ 
  THIS IS OUR TABLE VIEW CONTROLLER. 
  
  As per the official Apple Developer Guide "Start Developing iOS Apps (Swift)":
@@ -48,8 +48,15 @@ class GroupTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func downloadGroups()
+    func downloadGroups() -> Bool
     {
+        
+        // this mutex will be used to make sure that we don't return a value until the datatask is actually done
+        let local_mutex = Mutex()
+        local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
+        
+        var toreturn = false
+        
         restoreCookies()
         
         // dowload the data
@@ -69,70 +76,87 @@ class GroupTableViewController: UITableViewController {
             
             guard let dataResponse = data, error == nil else {
                 print(error?.localizedDescription ?? "Response Error")
+                
+                local_mutex.unlock()
                 return
             }
+            
             print(dataResponse)
+            
             do {
                 //here dataResponse received from a network request
                 let decoder = JSONDecoder()
                 self.groups = try decoder.decode([GroupInfo].self, from:
                     dataResponse) //Decode JSON Response Data
                 print(self.groups)
-                
-                DispatchQueue.main.async {
-                    
-                }
+                toreturn = true
                 
             } catch let parsingError {
                 print("Error", parsingError)
                 return
             }
             
+            local_mutex.unlock()
+            
         }
         task.resume()
+        
+        local_mutex.lock()
+        return toreturn
     }
     
     func downloadGroupImage(groupname: String) -> UIImage
     {
-        //restoreCookies()
+        //restoreCookies() // actually not needed since the images are not protected yet
+        
+        let local_mutex = Mutex()
+        local_mutex.lock()
+        
+        // by default, if we can't download a profile picture from the network, this function returns the default image
+        var returnimage = UIImage(named: "defaultPhoto")!
+        
         // download the profile picture
         let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/groups_pictures/" + groupname + ".jpg"
         print("imagelocation:" + imageLocation)
         guard let imageUrl = URL(string: imageLocation) else {
             print("Cannot create URL")
-            return UIImage(named: "defaultPhoto")!
-        }
-        var returnimage = UIImage(named: "defaultPhoto")!
-        let image_task = URLSession.shared.downloadTask(with: imageUrl) {(location, response, error) in
-            guard let location = location else {
-                print("location is nil")
-                return
-            }
-            print(location)
-            let imageData = try! Data(contentsOf: location)
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                if (image != nil) {
-                    returnimage = image!
-                }
-            }
-        }
-        image_task.resume()
-        DispatchQueue.main.async {
+            local_mutex.unlock()
             return returnimage
         }
+        
+        let image_task = URLSession.shared.downloadTask(with: imageUrl) {(location, response, error) in
+            
+            guard let location = location else {
+                print("location is nil")
+                local_mutex.unlock()
+                return
+            }
+            
+            print(location)
+            
+            let imageData = try! Data(contentsOf: location)
+            let image = UIImage(data: imageData)
+            
+            if (image != nil)
+            {
+                returnimage = image!
+            }
+            local_mutex.unlock()
+        }
+        image_task.resume()
+        
+        local_mutex.lock()
         return returnimage
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //mutex_signin.lock()
-        downloadGroups()
-        //mutex_signin.unlock()
-        // Load the sample data by calling the private function loadSampleGroups() defined at the end of this page
-        //loadSampleGroups()
         
+        if (!downloadGroups())
+        {
+            showAlertView(error_message: "Could not download the user's groups")
+        }
         
         
     }
@@ -147,18 +171,19 @@ class GroupTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    // #cs50 This functions defines the number of sections of the table view. In our case, the table is pretty simple, and so one section is enough
+    // This functions defines the number of sections of the table view. In our case, the table is pretty simple, and so one section is enough
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
 
-    // #cs50 This function determines the number of rows that the table will need by counting the number of groups in the groups array.
+    // This function determines the number of rows that the table will need by counting the number of groups in the groups array.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("group count: "); print(groups.count); print("\n")
         return groups.count
     }
 
-    // #cs50 this function configures and displays the table's visible cells
+    // this function configures and displays the table's visible cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Table view cells are reused and should be dequeued using a cell identifier.

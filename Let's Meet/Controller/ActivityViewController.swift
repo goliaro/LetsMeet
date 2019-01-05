@@ -3,7 +3,7 @@
 //  Let's Meet
 //
 //  Created by Gabriele Oliaro on 12/4/17.
-//  Copyright © 2017 Kit, Alejandro & Gabriel. All rights reserved.
+//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
 //
 
 import UIKit
@@ -77,7 +77,7 @@ class ActivityViewController: UIViewController {
         
         super.prepare(for: segue, sender: sender)
         
-        //#cs50 There is actually only one segue, so the code would work evern without the switch, but it's safer to include it in case a new segue is added in the future.
+        //There is actually only one segue, so the code would work evern without the switch, but it's safer to include it in case a new segue is added in the future.
         switch(segue.identifier ?? "") {
             
         case "show_part2":
