@@ -26,6 +26,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     var image: UIImage?
 
     override func viewDidLoad() {
+        loadSampleActivities()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -45,7 +46,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         photoImageView.image = image
         
-        //loadSampleActivities()
+        
         
     }
 
@@ -137,16 +138,24 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             //addActivityViewController1.recent_activities = group?.recent_activities
         
-        default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        case "showGroupMembers":
+            
+            guard let groupMembersViewController = segue.destination as? GroupMembersViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            
+            groupMembersViewController.current_group_name = group?.name
         
+        default:
+            print("default segue")
         }
     }
     
     
     // MARK: Private Methods
     
-    /*private func loadSampleActivities() {
+    private func loadSampleActivities() {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -166,7 +175,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         activities += [activity1, activity2, activity3]
         
-    }*/
+    }
     
     
     // MARK: Actions

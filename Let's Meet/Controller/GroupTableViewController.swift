@@ -159,7 +159,6 @@ class GroupTableViewController: UITableViewController {
             showAlertView(error_message: "Could not download the user's groups")
         }
         
-        
     }
     
 
@@ -260,7 +259,7 @@ class GroupTableViewController: UITableViewController {
             
             
         case "showGroup":
-            guard let groupDetailedViewController = segue.destination as? GroupViewController else {
+            guard let current_groupViewController = segue.destination as? GroupViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
@@ -273,8 +272,8 @@ class GroupTableViewController: UITableViewController {
             }
             
             let selectedGroup = groups[indexPath.row]
-            groupDetailedViewController.group = selectedGroup
-            groupDetailedViewController.image = images[indexPath.row]
+            current_groupViewController.group = selectedGroup
+            current_groupViewController.image = images[indexPath.row]
         
         case "newGroup":
             os_log("Adding a new group.", log: OSLog.default, type: .debug)

@@ -8,38 +8,171 @@
 
 import UIKit
 
-class GroupMembersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupMembersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { //UITableViewDataSource, UITableViewDelegate
+    
+    @IBOutlet weak var membersTableView: UITableView!
+    
     
     //MARK: Properties
-    var members_usernames = [String]()
+    var group_members = [UserInfo]()
+    var current_group_name: String?
     
-
+    func showAlertView(error_message: String)
+    {
+        // Show an alert message
+        let alertController = UIAlertController(title: "Alert", message: error_message, preferredStyle: .alert)
+        let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            //print("You've pressed OK");
+        }
+        alertController.addAction(OK_button)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func downloadGroupMembers(post_params: [String:Any]) -> Bool
+    {
+        
+        // this mutex will be used to make sure that we don't return a value until the datatask is actually done
+        let local_mutex = Mutex()
+        local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
+        
+        var toreturn = false
+        
+        restoreCookies()
+        
+        // dowload the data
+        let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/get_group_members.php")
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        let session = URLSession(configuration: config)
+        var request = URLRequest(url: webservice_URL!)
+        
+        request.httpMethod = "POST"
+        let parameterArray = getPostString(params: post_params)
+        request.httpBody = parameterArray.data(using: String.Encoding.utf8)
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            print(response)
+            
+            guard let dataResponse = data, error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                
+                local_mutex.unlock()
+                return
+            }
+            
+            print(dataResponse)
+            
+            do {
+                //here dataResponse received from a network request
+                let decoder = JSONDecoder()
+                self.group_members = try decoder.decode([UserInfo].self, from:
+                    dataResponse) //Decode JSON Response Data
+                print(self.group_members)
+                toreturn = true
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+                return
+            }
+            
+            local_mutex.unlock()
+            
+        }
+        task.resume()
+        
+        local_mutex.lock()
+        return toreturn
+    }
+    
+    func downloadMemberImage(username: String) -> UIImage
+    {
+        //restoreCookies() // actually not needed since the images are not protected yet
+        
+        let local_mutex = Mutex()
+        local_mutex.lock()
+        
+        // by default, if we can't download a profile picture from the network, this function returns the default image
+        var returnimage = UIImage(named: "defaultPhoto")!
+        
+        // download the profile picture
+        let username_safe = username.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let imageLocation = "https://www.gabrieleoliaro.it/db/uploads/profile_pictures/" + username_safe + ".jpg"
+        print("imagelocation:" + imageLocation)
+        guard let imageUrl = URL(string: imageLocation) else {
+            print("Cannot create URL")
+            local_mutex.unlock()
+            return returnimage
+        }
+        
+        let image_task = URLSession.shared.downloadTask(with: imageUrl) {(location, response, error) in
+            
+            guard let location = location else {
+                print("location is nil")
+                local_mutex.unlock()
+                return
+            }
+            
+            print(location)
+            
+            let imageData = try! Data(contentsOf: location)
+            let image = UIImage(data: imageData)
+            
+            if (image != nil)
+            {
+                returnimage = image!
+            }
+            local_mutex.unlock()
+        }
+        image_task.resume()
+        
+        local_mutex.lock()
+        return returnimage
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        membersTableView.dataSource = self
+        membersTableView.delegate = self
+
+
+        let post_params:[String:String] = ["group_name": current_group_name!]
+        
+        // Do any additional setup after loading the view.
+        if (!downloadGroupMembers(post_params: post_params))
+        {
+            showAlertView(error_message: "Could not download the user's groups")
+        }
         
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members_usernames.count
+        print("group_members.count: "); print(group_members.count); print("\n")
+        return group_members.count
+        
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "GroupMembersTableViewCell"
-        
+        let cellIdentifier = "cellReuseIdentifier"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GroupMembersTableViewCell else {
             fatalError("The dequeued cell is not an instance of GroupMembersTableViewCell")
         }
         
-        let member = members_usernames[indexPath.row]
-        
-        //GO ONLINE, DOWNLOAD THE INFO OF THE USER WHOSE USERNAME IS member AND SET THEM UP INTO THE CELL'S OBJECTS name label, username label and profile photo image.
+        let member = group_members[indexPath.row]
+        print("member: "); print(member)
+        cell.memberNameLabel.text = member.name
+        cell.memberUsernameLabel.text = member.username
+        cell.memberProfilePhoto.image = downloadMemberImage(username: member.username)
         
         
         return cell
