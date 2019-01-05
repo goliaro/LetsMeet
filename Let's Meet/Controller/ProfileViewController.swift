@@ -120,19 +120,27 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logoutButton(_ sender: UIButton) {
         
+        // local mutex used to make sure that we don't perform the segue before we have finished logging out
+        let local_mutex = Mutex()
+        local_mutex.lock()
+        var logged_out = false
+        
         // call logout php
         
         // download the profile picture
         let logoutpage = "https://www.gabrieleoliaro.it/db/logout.php"
         guard let logouturl = URL(string: logoutpage) else {
             print("Cannot connect to logout page")
+            local_mutex.unlock()
             return
         }
         let task = URLSession.shared.dataTask(with: logouturl) {(data, response, error) in
             guard let dataResponse = String(data: data!, encoding: .utf8), error == nil else {
                 print(error?.localizedDescription ?? "Response Error")
+                local_mutex.unlock()
                 return
             }
+            
             if (dataResponse != "Logged out.")
             {
                 // main thread
@@ -143,13 +151,22 @@ class ProfileViewController: UIViewController {
                 return
             }
             
+            else {
+                logged_out = true
+            }
+            
+            local_mutex.unlock()
+            
         }
         task.resume()
-        // in main thread otherwise this stuff gets done before the task gets completed (in background)
-        DispatchQueue.main.async {
+        local_mutex.lock()
+        if (logged_out) {
             eraseCookies()
             self.performSegue(withIdentifier: "logoutSegue", sender: sender)
         }
+        local_mutex.unlock()
+        
+        
     }
     
     
