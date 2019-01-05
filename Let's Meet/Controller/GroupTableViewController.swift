@@ -35,7 +35,7 @@ class GroupTableViewController: UITableViewController {
     
     //MARK: Properties
     var groups = [GroupInfo]() // This creates the array of objects Groups
-    //var users = [User]()
+    var images = [UIImage]()
     
     func showAlertView(error_message: String)
     {
@@ -198,7 +198,9 @@ class GroupTableViewController: UITableViewController {
         let group = groups[indexPath.row]
         
         cell.groupNameLabel.text = group.name
-        cell.groupPhotoImageView.image = downloadGroupImage(groupname: group.name)
+        let currentImage = downloadGroupImage(groupname: group.name)
+        cell.groupPhotoImageView.image = currentImage
+        self.images.append(currentImage)
         cell.groupDescriptionLabel.text = group.description
         
         return cell
@@ -271,7 +273,8 @@ class GroupTableViewController: UITableViewController {
             }
             
             let selectedGroup = groups[indexPath.row]
-            //groupDetailedViewController.group = selectedGroup
+            groupDetailedViewController.group = selectedGroup
+            groupDetailedViewController.image = images[indexPath.row]
         
         case "newGroup":
             os_log("Adding a new group.", log: OSLog.default, type: .debug)

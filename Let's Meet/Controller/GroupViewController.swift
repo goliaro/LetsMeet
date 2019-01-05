@@ -22,7 +22,8 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     /*
      This value should be passed by 'GroupTableViewController' in 'prepare(for:sender:)'
      */
-    var group: Group?
+    var group: GroupInfo?
+    var image: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +34,18 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Set up the views with the info of the group currently selected
         if let group = group {
             titleTextField.text = group.name
-            descriptionTextField.text = group.description
-            photoImageView.image = group.photo
+            if (group.description == "")
+            {
+                descriptionTextField.text = "No description has been provided for this group."
+            }
+            else {
+                descriptionTextField.text = group.description
+            }
         }
         
-        loadSampleActivities()
+        photoImageView.image = image
+        
+        //loadSampleActivities()
         
     }
 
@@ -127,7 +135,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
             }
             
-            addActivityViewController1.recent_activities = group?.recent_activities
+            //addActivityViewController1.recent_activities = group?.recent_activities
         
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
@@ -138,7 +146,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: Private Methods
     
-    private func loadSampleActivities() {
+    /*private func loadSampleActivities() {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -158,7 +166,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         activities += [activity1, activity2, activity3]
         
-    }
+    }*/
     
     
     // MARK: Actions
