@@ -8,10 +8,9 @@
 
 import UIKit
 
-class GroupMembersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { //UITableViewDataSource, UITableViewDelegate
+class GroupMembersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { 
     
     @IBOutlet weak var membersTableView: UITableView!
-    
     
     //MARK: Properties
     var group_members = [UserInfo]()
@@ -138,8 +137,7 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         
         membersTableView.dataSource = self
         membersTableView.delegate = self
-
-
+        
         let post_params:[String:String] = ["group_name": current_group_name!]
         
         // Do any additional setup after loading the view.
@@ -150,6 +148,11 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -164,9 +167,7 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "cellReuseIdentifier"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GroupMembersTableViewCell else {
-            fatalError("The dequeued cell is not an instance of GroupMembersTableViewCell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! GroupMembersTableViewCell
         
         let member = group_members[indexPath.row]
         print("member: "); print(member)
@@ -175,12 +176,8 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         cell.memberProfilePhoto.image = downloadMemberImage(username: member.username)
         
         
+        
         return cell
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
