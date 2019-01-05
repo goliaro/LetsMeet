@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  CreateNewGroupViewController.swift
 //  Let's Meet
 //
 //  Created by Gabriele Oliaro on 12/6/17.
@@ -7,63 +7,17 @@
 //
 
 import UIKit
-import Foundation
+import os.log
 
-
-extension Data {
-    mutating func append(string: String) {
-        let data = string.data(
-            using: String.Encoding.utf8,
-            allowLossyConversion: true)
-        append(data!)
-    }
-}
-
-//credits: https://stackoverflow.com/questions/26335656/how-to-upload-images-to-a-server-in-ios-with-swift?noredirect=1&lq=1
-func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: Data, boundary: String, name: String) -> Data {
-    var body = Data()
+class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    if parameters != nil {
-        for (key, value) in parameters! {
-            body.append(Data("--\(boundary)\r\n".utf8))
-            body.append(Data("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".utf8))
-            body.append(Data("\(value)\r\n".utf8))
-        }
-    }
-    
-    let filename = name + ".jpg"
-    
-    let mimetype = "image/jpg"
-    
-    body.append(Data("--\(boundary)\r\n".utf8))
-    body.append(Data(("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n").utf8))
-    body.append(Data("Content-Type: \(mimetype)\r\n\r\n".utf8))
-    body.append(imageDataKey)
-    body.append(Data("\r\n".utf8))
-    
-    body.append(Data("--\(boundary)--\r\n".utf8))
-    
-    return body
-}
-
-func generateBoundaryString() -> String {
-    return "Boundary-\(NSUUID().uuidString)"
-}
-
-
-class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var profilePhotoImageView: UIImageView!
-    
+    @IBOutlet weak var newGroupNameField: UITextField!
+    @IBOutlet weak var newGroupDescriptionField: UITextField!
+    @IBOutlet weak var newGroupProfilePhotoImageView: UIImageView!
     let imagePicker = UIImagePickerController()
-    
+    var group_key: String?
     var pickedImage: UIImage?
     var pickedImageURL: URL?
     
@@ -77,11 +31,31 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         alertController.addAction(OK_button)
         self.present(alertController, animated: true, completion: nil)
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    func register(param: [String:String]?, username: String, uploadUrl: URL, imageView: UIImageView) -> Bool
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // Hide the keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+
+    
+    func create_group(param: [String:String]?, groupname: String, uploadUrl: URL, imageView: UIImageView) -> Bool
     {
-        eraseCookies()
-     
+        restoreCookies()
+        
         // this mutex will be used to make sure that we don't return a value until the datatask is actually done
         let local_mutex = Mutex()
         local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
@@ -107,7 +81,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
             return toreturn
         }
         
-        request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageasdata!, boundary: boundary, name: username)
+        request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageasdata!, boundary: boundary, name: groupname)
         
         print("printing request now")
         print(request)
@@ -134,7 +108,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
             }
             
             print(dataResponse)
-            if (dataResponse != "Your registration was successful")
+            if (dataResponse != "New group was created with success.")
             {
                 // main thread
                 DispatchQueue.main.async {
@@ -158,77 +132,84 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         return toreturn
     }
     
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "addMember":
+            os_log("Adding new members", log: OSLog.default, type: .debug)
+            
+            guard let navVC = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination view controller \(segue.destination)")
+            }
+            
+            guard let AddMemberToGroupViewController = navVC.viewControllers.first as? AddMemberToGroupViewController else {
+                fatalError("Unexpected destination: \(navVC.viewControllers.first)")
+                
+            }
+            
+            AddMemberToGroupViewController.group_key = self.group_key
+            
+
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+            
+    }*/
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imagePicker.delegate = self
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
     // MARK: Actions
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        // Cancel and unwind to login/register homepage
         dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func register_button(_ sender: UIBarButtonItem) {
+    @IBAction func Done(_ sender: UIBarButtonItem) {
         
-        // Ensure the name and email address fields are not empty
-        if (nameTextField.text == "" || emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextField.text == "") {
-            DispatchQueue.main.async {
-                self.showAlertView(error_message: "name, username, email and password must be filled in.")
-            }
-            return
-        }
-        else if (passwordTextField.text != confirmPasswordTextField.text) {
-            DispatchQueue.main.async {
-                self.showAlertView(error_message: "passwords do not match")
-            }
-            return
-        }
-        else if (passwordTextField.text!.count < 6 || passwordTextField.text!.count > 20) {
-            DispatchQueue.main.async {
-                self.showAlertView(error_message: "password should be between 6 and 20 characters")
-            }
-            return
-        }
-        
-        
-        // register
-        let register_params:[String:String] = ["username": usernameTextField.text!, "name": nameTextField.text!, "password": passwordTextField.text!, "password2": confirmPasswordTextField.text!, "email": emailTextField.text!, "submit": "upload"]
-        //register(post_params: register_params, url: "https://www.gabrieleoliaro.it/db/register_new.php")
-        
-        let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/register_new.php")
-        
-        if register(param: register_params, username: usernameTextField.text!, uploadUrl: webservice_URL!, imageView: profilePhotoImageView)
+        // Make sure that the group name was inserted
+        if (newGroupNameField.text! == "")
         {
-            performSegue(withIdentifier: "showGroupsTable", sender: sender)
+            showAlertView(error_message: "Please provide a name for the new group")
+            return
         }
+        
+        // make post request to create group
+        let create_group_params:[String:String] = ["name": newGroupNameField.text!, "description": newGroupDescriptionField.text!, "submit": "upload"]
+        
+        let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/create_group.php")
+        
+        if create_group(param: create_group_params, groupname: newGroupNameField.text!, uploadUrl: webservice_URL!, imageView: newGroupProfilePhotoImageView)
+        {
+            //unwind to groupsview
+            self.performSegue(withIdentifier: "createGroupWithoutAddingMembers", sender: sender)
+        }
+        
+        
         
         
     }
     
-    
-    @IBAction func loadImage(_ sender: UIButton) {
+    @IBAction func pickProfilePhotoFromLibrary(_ sender: UIButton) {
         imagePicker.sourceType = .photoLibrary
-        
         present(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func removeImage(_ sender: UIButton) {
+    @IBAction func removePicture(_ sender: UIButton) {
         // remove image from imageview preview
         let noimage: UIImage = UIImage(named: "defaultPhoto")!
-        profilePhotoImageView.image = noimage
-        
+        newGroupProfilePhotoImageView.image = noimage
     }
+    
+    
+    // MARK: ImagePicker Delegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -247,8 +228,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         
         // if survived
         // set image into imageview for a quick preview
-        profilePhotoImageView.contentMode = .scaleAspectFit
-        profilePhotoImageView.image = pi
+        newGroupProfilePhotoImageView.contentMode = .scaleAspectFit
+        newGroupProfilePhotoImageView.image = pi
         
         // save image into globals so that we can access it
         pickedImage = pi
@@ -262,7 +243,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     
 }
-

@@ -30,7 +30,7 @@
 		E047DFC51FD7ECBB008634DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC41FD7ECBB008634DD /* LoginViewController.swift */; };
 		E08E213321DA1B2E0095DCC4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
-		E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */; };
+		E0C826051FD8EB1200DA36C3 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -83,7 +83,7 @@
 		E047DFC41FD7ECBB008634DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
+		E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +197,9 @@
 			children = (
 				D56B27471FD0F1510091648F /* AppDelegate.swift */,
 				D56B27491FD0F1510091648F /* ViewController.swift */,
+				E047DFC41FD7ECBB008634DD /* LoginViewController.swift */,
+				E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */,
+				E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */,
 				D5D531221FD2FBBF00A54464 /* GroupTableViewController.swift */,
 				D557EF0B1FD457650087B474 /* GroupViewController.swift */,
 				E013FBAC1FD645C500BCA2C3 /* ActivityViewController.swift */,
@@ -207,11 +210,8 @@
 				E0166FAC1FD666B600D905F7 /* GroupMembersTableViewCell.swift */,
 				E01A6E4D1FD6E3ED00BA1B7D /* AddActivityViewController.swift */,
 				E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */,
-				E047DFC41FD7ECBB008634DD /* LoginViewController.swift */,
-				E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */,
-				E0C826041FD8EB1200DA36C3 /* CreateNewGroupViewController.swift */,
+				E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */,
 				E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */,
-				E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -477,7 +477,7 @@
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
 				D5D531211FD2F80700A54464 /* Group.swift in Sources */,
 				E01A6E4E1FD6E3ED00BA1B7D /* AddActivityViewController.swift in Sources */,
-				E0C826051FD8EB1200DA36C3 /* CreateNewGroupViewController.swift in Sources */,
+				E0C826051FD8EB1200DA36C3 /* AddGroupViewController.swift in Sources */,
 				E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */,
 				E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */,
 				E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */,
