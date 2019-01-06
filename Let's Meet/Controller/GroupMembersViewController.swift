@@ -15,6 +15,10 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: Properties
     var group_members = [UserInfo]()
     var current_group_name: String?
+    var current_group_owner: String?
+    @IBOutlet weak var removeButtonOutlet: UIButton!
+    
+    let unwind_mutex = Mutex()
     
     func showAlertView(error_message: String)
     {
@@ -150,11 +154,19 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         membersTableView.dataSource = self
         membersTableView.delegate = self
         
+        // only the owner can remove members from a group
+        if (current_group_owner == UUsername)
+        {
+            removeButtonOutlet.isEnabled = true
+        }
         getUpdatedInfo()
         
     }
     
-
+    @IBAction func removeMember(_ sender: UIButton) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -203,18 +215,23 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         case "addMember":
             let destinationNavigationController = segue.destination as! UINavigationController
             let AddMemberToGroupViewController = destinationNavigationController.topViewController as!AddMemberToGroupViewController
-            /*guard let AddMemberToGroupViewController = segue.destination as? AddMemberToGroupViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }*/
             
             
             AddMemberToGroupViewController.group_name = current_group_name
+        
+        case "removeMember":
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let RemoveMemberFromGroupViewController = destinationNavigationController.topViewController as!RemoveMemberFromGroupViewController
+            
+            
+            RemoveMemberFromGroupViewController.group_name = current_group_name
             
         default:
             print("default segue")
         }
     }
-    let unwind_mutex = Mutex()
+    
+    
     @IBAction func unwindToGroupMembers(segue:UIStoryboardSegue) {
         unwind_mutex.lock()
         getUpdatedInfo()

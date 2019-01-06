@@ -146,7 +146,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             
             groupMembersViewController.current_group_name = group?.name
-        
+            groupMembersViewController.current_group_owner = group?.owner
         default:
             print("default segue")
         }

@@ -32,6 +32,7 @@
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 		E0C826051FD8EB1200DA36C3 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
+		E0CD1ACA21E182D60069F7BF /* RemoveMemberFromGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD1AC921E182D60069F7BF /* RemoveMemberFromGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
+		E0CD1AC921E182D60069F7BF /* RemoveMemberFromGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMemberFromGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +214,7 @@
 				E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */,
 				E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */,
 				E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */,
+				E0CD1AC921E182D60069F7BF /* RemoveMemberFromGroupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				E01A6E4E1FD6E3ED00BA1B7D /* AddActivityViewController.swift in Sources */,
 				E0C826051FD8EB1200DA36C3 /* AddGroupViewController.swift in Sources */,
 				E013FBA91FD5FEE500BCA2C3 /* ActivityTableViewCell.swift in Sources */,
+				E0CD1ACA21E182D60069F7BF /* RemoveMemberFromGroupViewController.swift in Sources */,
 				E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */,
 				E013FBAD1FD645C500BCA2C3 /* ActivityViewController.swift in Sources */,
 				E001EE151FD93CE10027B585 /* User.swift in Sources */,
