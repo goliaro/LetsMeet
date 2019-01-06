@@ -36,6 +36,7 @@ class GroupTableViewController: UITableViewController {
     //MARK: Properties
     var groups = [GroupInfo]() // This creates the array of objects Groups
     var images = [UIImage]()
+    let unwind_mutex = Mutex()
     
     func showAlertView(error_message: String)
     {
@@ -150,14 +151,19 @@ class GroupTableViewController: UITableViewController {
         return returnimage
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func getUpdatedInfo()
+    {
         if (!downloadGroups())
         {
             showAlertView(error_message: "Could not download the user's groups")
         }
+        unwind_mutex.unlock()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.getUpdatedInfo()
         
     }
     
@@ -205,42 +211,6 @@ class GroupTableViewController: UITableViewController {
         return cell
     }
     
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation
@@ -283,47 +253,13 @@ class GroupTableViewController: UITableViewController {
         
     }
     
-    
-    
-    //MARK: Private Methods
-    
-    // This function will load for the demo the 4 sample group whose images are saved into the Assets.xcassets
-    /*private func loadSampleGroups() {
-        
-        // Declare a constant for each image in Assets.xcassets
-        let photo1 = UIImage(named: "CS 50")
-        let photo2 = UIImage(named: "Ec 10")
-        let photo3 = UIImage(named: "CSA group")
-        let photo4 = UIImage(named: "Best friends")
-        
-        let recent_activities_sample = ["apple picking", "pset 8", "lunch", "running"]
-        
-        // Instantiate the sample groups with name, photo and description
-        guard let group1 = Group(name: "CS 50", photo: photo1, description: "Official group for Fall 2017") else {
-            fatalError("Unable to instantiate group1")
-        }
-        group1.recent_activities = recent_activities_sample
-        
-        guard let group2 = Group(name: "EC 10", photo: photo2, description: "Official group for Fall 2017") else {
-            fatalError("Unable to instantiate group1")
-        }
-        
-        group2.recent_activities = recent_activities_sample
-        
-        guard let group3 = Group(name: "CSA", photo: photo3, description: "Catholic Student Association (all members)") else {
-            fatalError("Unable to instantiate group1")
-        }
-        
-        group3.recent_activities = recent_activities_sample
-        
-        guard let group4 = Group(name: "Friends", photo: photo4, description: "Ryan, Pawel, Gabriele, Pedro, Joey, Caleb") else {
-            fatalError("Unable to instantiate group1")
-        }
-        
-        group4.recent_activities = recent_activities_sample
-        
-        groups += [group1, group2, group3, group4]
-    }*/
+    @IBAction func unwindToGroupTableView(segue:UIStoryboardSegue) {
+        unwind_mutex.lock()
+        self.getUpdatedInfo()
+        unwind_mutex.lock()
+        self.tableView.reloadData()
+        unwind_mutex.unlock()
+    }
 
 
 }

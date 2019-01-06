@@ -33,6 +33,7 @@
 		E0C826051FD8EB1200DA36C3 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
 		E0CD1ACA21E182D60069F7BF /* RemoveMemberFromGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD1AC921E182D60069F7BF /* RemoveMemberFromGroupViewController.swift */; };
+		E0CD1ACC21E192260069F7BF /* LeaveOrDeleteGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD1ACB21E192250069F7BF /* LeaveOrDeleteGroupViewController.swift */; };
 		E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
 		E0CD1AC921E182D60069F7BF /* RemoveMemberFromGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMemberFromGroupViewController.swift; sourceTree = "<group>"; };
+		E0CD1ACB21E192250069F7BF /* LeaveOrDeleteGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveOrDeleteGroupViewController.swift; sourceTree = "<group>"; };
 		E0D6EDFB1FD89A1400D8632C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +217,7 @@
 				E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */,
 				E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */,
 				E0CD1AC921E182D60069F7BF /* RemoveMemberFromGroupViewController.swift */,
+				E0CD1ACB21E192250069F7BF /* LeaveOrDeleteGroupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D557EF0C1FD457650087B474 /* GroupViewController.swift in Sources */,
+				E0CD1ACC21E192260069F7BF /* LeaveOrDeleteGroupViewController.swift in Sources */,
 				E0166FAD1FD666B600D905F7 /* GroupMembersTableViewCell.swift in Sources */,
 				E0100C5B1FD7934800726B87 /* ActivityViewController2.swift in Sources */,
 				E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */,

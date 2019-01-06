@@ -297,6 +297,9 @@
                                 <rect key="frame" x="120" y="748" width="134" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Leave/Delete group"/>
+                                <connections>
+                                    <segue destination="h1d-w1-1US" kind="show" identifier="leaveOrDeleteGroup" id="Tu5-Xl-Her"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2d-6d-Tbg">
                                 <rect key="frame" x="16" y="725" width="89" height="30"/>
@@ -1476,10 +1479,10 @@
             </objects>
             <point key="canvasLocation" x="6893.6000000000004" y="-1465.2709359605913"/>
         </scene>
-        <!--View Controller-->
+        <!--Leave Or Delete Group View Controller-->
         <scene sceneID="wpL-zm-23u">
             <objects>
-                <viewController id="d2k-KA-8ZQ" sceneMemberID="viewController">
+                <viewController id="d2k-KA-8ZQ" customClass="LeaveOrDeleteGroupViewController" customModule="Let_s_Meet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0OM-vS-JBo"/>
                         <viewControllerLayoutGuide type="bottom" id="OyQ-an-r7z"/>
@@ -1507,12 +1510,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Leave!"/>
+                                <connections>
+                                    <action selector="leaveGroupButton:" destination="d2k-KA-8ZQ" eventType="touchUpInside" id="YaA-9H-eMy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSY-b0-jIG">
                                 <rect key="frame" x="116" y="366" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Delete!"/>
+                                <connections>
+                                    <action selector="deleteGroupButton:" destination="d2k-KA-8ZQ" eventType="touchUpInside" id="JzW-IL-8f3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1520,8 +1529,13 @@
                     <navigationItem key="navigationItem" id="N3a-H6-pKK">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CDH-IH-YjC"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="deleteButtonOutlet" destination="ZSY-b0-jIG" id="wpe-f3-VVN"/>
+                        <segue destination="yOs-Cs-zDw" kind="unwind" identifier="unwindToGroupTableView" unwindAction="unwindToGroupTableViewWithSegue:" id="g6T-L3-HP5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zq4-mp-QHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yOs-Cs-zDw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7276.875" y="92.957746478873247"/>
         </scene>

@@ -159,7 +159,7 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         {
             removeButtonOutlet.isEnabled = true
         }
-        getUpdatedInfo()
+        self.getUpdatedInfo()
         
     }
     
@@ -225,6 +225,16 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
             
             
             RemoveMemberFromGroupViewController.group_name = current_group_name
+            RemoveMemberFromGroupViewController.group_name = current_group_owner
+            
+            
+        case "leaveOrDeleteGroup":
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let LeaveOrDeleteGroupViewController = destinationNavigationController.topViewController as!LeaveOrDeleteGroupViewController
+            
+            
+            LeaveOrDeleteGroupViewController.group_name = current_group_name
+            LeaveOrDeleteGroupViewController.owner = current_group_owner
             
         default:
             print("default segue")
@@ -234,7 +244,7 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBAction func unwindToGroupMembers(segue:UIStoryboardSegue) {
         unwind_mutex.lock()
-        getUpdatedInfo()
+        self.getUpdatedInfo()
         unwind_mutex.lock()
         membersTableView.reloadData()
         unwind_mutex.unlock()

@@ -1,20 +1,18 @@
 //
-//  RemoveMemberFromGroupViewController.swift
+//  LeaveOrDeleteGroupViewController.swift
 //  Let's Meet
 //
 //  Created by Gabriele Oliaro on 06/01/2019.
-//  Copyright © 2019 Gabriele Oliaro. All rights reserved.
+//  Copyright © 2019 Kit, Alejandro & Gabriel. All rights reserved.
 //
 
 import UIKit
 
-class RemoveMemberFromGroupViewController: UIViewController {
-
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var resultTextField: UITextField!
+class LeaveOrDeleteGroupViewController: UIViewController {
     
     var group_name: String?
     var owner: String?
+    @IBOutlet weak var deleteButtonOutlet: UIButton!
     
     func showAlertView(error_message: String)
     {
@@ -25,6 +23,21 @@ class RemoveMemberFromGroupViewController: UIViewController {
         }
         alertController.addAction(OK_button)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // only the owner can delete the group
+        print("\n\n\n\n owner: "); print(owner)
+        print("\n UUsername: "); print(UUsername)
+        print("\n group_name: "); print(group_name)
+        if (owner == UUsername)
+        {
+            deleteButtonOutlet.isEnabled = true
+        }
+        
+        // Do any additional setup after loading the view.
     }
     
     func removeMember(post_params: [String:Any], url:String) -> String
@@ -92,29 +105,20 @@ class RemoveMemberFromGroupViewController: UIViewController {
         return toreturn
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func leaveGroupButton(_ sender: UIButton) {
+        let remove_params:[String:String] = ["member_username": UUsername!, "group_name": group_name!]
+        showAlertView(error_message: removeMember(post_params: remove_params, url: "https://www.gabrieleoliaro.it/db/remove_member_from_group.php"))
         
-        // Do any additional setup after loading the view.
+        performSegue(withIdentifier: "unwindToGroupTableView", sender: sender)
+        
     }
     
-    @IBAction func remove(_ sender: UIButton) {
-        if (usernameTextField.text! == "")
-        {
-            self.showAlertView(error_message: "username must be filled in.")
-            return
-        }
+    @IBAction func deleteGroupButton(_ sender: UIButton) {
+        let remove_params:[String:String] = ["member_username": UUsername!, "group_name": group_name!]
+        showAlertView(error_message: removeMember(post_params: remove_params, url: "https://www.gabrieleoliaro.it/db/remove_member_from_group.php"))
         
-        let remove_params:[String:String] = ["member_username": usernameTextField.text!, "group_name": group_name!]
-        
-        resultTextField.text = removeMember(post_params: remove_params, url: "https://www.gabrieleoliaro.it/db/remove_member_from_group.php")
+        performSegue(withIdentifier: "unwindToGroupTableView", sender: sender)
     }
-    
-    
-    @IBAction func done(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "unwindSegueToGroupMembers", sender: sender)
-    }
-    
     /*
     // MARK: - Navigation
 
