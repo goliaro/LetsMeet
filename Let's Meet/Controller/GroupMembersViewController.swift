@@ -132,12 +132,8 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         return returnimage
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        membersTableView.dataSource = self
-        membersTableView.delegate = self
-        
+    func getUpdatedInfo()
+    {
         let post_params:[String:String] = ["group_name": current_group_name!]
         
         // Do any additional setup after loading the view.
@@ -145,6 +141,16 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
         {
             showAlertView(error_message: "Could not download the user's groups")
         }
+        unwind_mutex.unlock()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        membersTableView.dataSource = self
+        membersTableView.delegate = self
+        
+        getUpdatedInfo()
         
     }
     
@@ -181,14 +187,41 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+            
+        case "addMember":
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let AddMemberToGroupViewController = destinationNavigationController.topViewController as!AddMemberToGroupViewController
+            /*guard let AddMemberToGroupViewController = segue.destination as? AddMemberToGroupViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }*/
+            
+            
+            AddMemberToGroupViewController.group_name = current_group_name
+            
+        default:
+            print("default segue")
+        }
     }
-    */
+    let unwind_mutex = Mutex()
+    @IBAction func unwindToGroupMembers(segue:UIStoryboardSegue) {
+        unwind_mutex.lock()
+        getUpdatedInfo()
+        unwind_mutex.lock()
+        membersTableView.reloadData()
+        unwind_mutex.unlock()
+    }
+
 
 }
