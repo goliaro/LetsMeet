@@ -9,10 +9,23 @@
 import UIKit
 import os.log
 
+struct ActivityInfo: Codable {
+    var activity_id: String
+    var name: String
+    var group_name: String
+    var owner: String
+    var place: String
+    var description: String?
+    var starting_time: String
+    var ending_time: String?
+}
+
+
+
 class GroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties
-    var activities = [Activity]()
+    var activities = [ActivityInfo]()
     
     @IBOutlet weak var titleTextField: UILabel!
     @IBOutlet weak var descriptionTextField: UILabel!
@@ -24,29 +37,145 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
      */
     var group: GroupInfo?
     var image: UIImage?
-
-    override func viewDidLoad() {
-        loadSampleActivities()
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    let unwind_mutex = Mutex()
+    
+    func showAlertView(error_message: String)
+    {
+        // Show an alert message
+        let alertController = UIAlertController(title: "Alert", message: error_message, preferredStyle: .alert)
+        let OK_button = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            //print("You've pressed OK");
+        }
+        alertController.addAction(OK_button)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func sort_activities()
+    {
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         
-        // Set up the views with the info of the group currently selected
-        if let group = group {
-            titleTextField.text = group.name
-            if (group.description == "")
+        self.activities.sort(by: { formatter.date(from: $0.starting_time)!.compare(formatter.date(from: $1.starting_time)!) == .orderedAscending })
+        
+    }
+    
+    func remove_expired_activities()
+    {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        //formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        var activities_not_expired = [ActivityInfo]()
+        
+        for current_activity in activities {
+            //print ("comparing: ")
+            //print(formatter.date(from: current_activity.starting_time)!)
+            //print(Date())
+            
+            if (current_activity.ending_time == nil)
             {
-                descriptionTextField.text = "No description has been provided for this group."
+                activities_not_expired.append(current_activity)
             }
-            else {
-                descriptionTextField.text = group.description
+            
+            else if (formatter.date(from: current_activity.ending_time!)!.compare(Date()) == .orderedDescending) {
+                //print ("starting after now")
+                activities_not_expired.append(current_activity)
             }
         }
         
+        self.activities = activities_not_expired
+    }
+    
+    func downloadActivities(post_params: [String:Any]) -> Bool
+    {
+        
+        // this mutex will be used to make sure that we don't return a value until the datatask is actually done
+        let local_mutex = Mutex()
+        local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
+        
+        var toreturn = false
+        
+        restoreCookies()
+        
+        // dowload the data
+        let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/get_group_activities.php")
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        let session = URLSession(configuration: config)
+        var request = URLRequest(url: webservice_URL!)
+        request.httpMethod = "POST"
+        
+        let parameterArray = getPostString(params: post_params)
+        request.httpBody = parameterArray.data(using: String.Encoding.utf8)
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            print(response)
+            
+            guard let dataResponse = data, error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                
+                local_mutex.unlock()
+                return
+            }
+            
+            print(dataResponse)
+            
+            do {
+                //here dataResponse received from a network request
+                let decoder = JSONDecoder()
+                self.activities = try decoder.decode([ActivityInfo].self, from:
+                    dataResponse) //Decode JSON Response Data
+                print(self.activities)
+                toreturn = true
+                
+            } catch let parsingError {
+                print("Error:", parsingError)
+                return
+            }
+            
+            local_mutex.unlock()
+            
+        }
+        task.resume()
+        
+        local_mutex.lock()
+        
+        return toreturn
+    }
+    
+    func getUpdatedInfo()
+    {
+        let post_params:[String:String] = ["group_name": (group?.name)!]
+        if (!downloadActivities(post_params: post_params))
+        {
+            showAlertView(error_message: "Could not download the user's activities")
+        }
+        
+        self.sort_activities()
+        self.remove_expired_activities()
+        
+        unwind_mutex.unlock()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        titleTextField.text = group?.name
+        descriptionTextField.text = group?.description
         photoImageView.image = image
         
-        
+        getUpdatedInfo()
         
     }
 
@@ -82,12 +211,10 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Configure the cell...
         cell.activityTitle.text = activity.name
+        cell.activityStartingTime.text = activity.starting_time
+        cell.activityEndingTime.text = activity.ending_time
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
         
-        cell.activityStartingTime.text = formatter.string(from: activity.starting_time)
-        cell.activityEndingTime.text = formatter.string(from: activity.ending_time)
         
         return cell
     }
@@ -154,28 +281,13 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     // MARK: Private Methods
+    /*
+     let formatter = DateFormatter()
+     formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+     formatter.locale = Locale(identifier: "en_US_POSIX")
+     formatter.timeZone = TimeZone(secondsFromGMT: 0)
+     */
     
-    private func loadSampleActivities() {
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        //let someDateTime = formatter.date(from: "2016/10/08 22:31")
-        
-        guard let activity1 = Activity(name: "Lunch", starting_time: formatter.date(from: "2017/12/05 14:00")!, ending_time: formatter.date(from: "2017/12/05 14:30")!, description: "Lunch together!", location: "Winthrop Dining Hall", participants_usernames: ["mario", "guido", "giulio"]) else {
-            fatalError("Unable to instantiate activity 1.")
-        }
-        
-        guard let activity2 = Activity(name: "Run on the river", starting_time: formatter.date(from: "2017/12/05 18:00")!, ending_time: formatter.date(from: "2017/12/05 19:30")!, description: "We'll run to MIT and back", location: "John Harvard Statue", participants_usernames: ["mario", "guido", "giulio"]) else {
-            fatalError("Unable to instantiate activity 2.")
-        }
-        
-        guard let activity3 = Activity(name: "Ice-cream at JP Licks", starting_time: formatter.date(from: "2017/12/06 15:00")!, ending_time: formatter.date(from: "2017/12/06 15:30")!, description: "", location: "", participants_usernames: ["mario", "guido", "giulio"]) else {
-            fatalError("Unable to instantiate activity 3.")
-        }
-        
-        activities += [activity1, activity2, activity3]
-        
-    }
     
     
     // MARK: Actions
@@ -184,7 +296,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
             // Add a new activity
             let newIndexPath = IndexPath(row: activities.count, section: 0)
             
-            activities.append(activity)
+            // dactivities.append(activity)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }

@@ -29,6 +29,7 @@
 		E01A6E501FD6E6CF00BA1B7D /* AddActivityViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */; };
 		E047DFC51FD7ECBB008634DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047DFC41FD7ECBB008634DD /* LoginViewController.swift */; };
 		E08E213321DA1B2E0095DCC4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */; };
+		E09696AE21E4BA9D00D8DC85 /* ActivityMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09696AD21E4BA9D00D8DC85 /* ActivityMemberTableViewCell.swift */; };
 		E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB9A741FD59F82005E4C0A /* Person.swift */; };
 		E0C826051FD8EB1200DA36C3 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */; };
 		E0C826091FD904CA00DA36C3 /* AddMemberToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */; };
@@ -84,6 +85,7 @@
 		E01A6E4F1FD6E6CF00BA1B7D /* AddActivityViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewController2.swift; sourceTree = "<group>"; };
 		E047DFC41FD7ECBB008634DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E08E213221DA1B2D0095DCC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E09696AD21E4BA9D00D8DC85 /* ActivityMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMemberTableViewCell.swift; sourceTree = "<group>"; };
 		E0AB9A741FD59F82005E4C0A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E0C826041FD8EB1200DA36C3 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		E0C826081FD904CA00DA36C3 /* AddMemberToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		E08E213621DA35FE0095DCC4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E09696AD21E4BA9D00D8DC85 /* ActivityMemberTableViewCell.swift */,
 				D56B27471FD0F1510091648F /* AppDelegate.swift */,
 				D56B27491FD0F1510091648F /* ViewController.swift */,
 				E047DFC41FD7ECBB008634DD /* LoginViewController.swift */,
@@ -296,7 +299,7 @@
 				TargetAttributes = {
 					D56B27431FD0F1510091648F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 3HZ8GXD28Q;
+						DevelopmentTeam = 754JLMB9L2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -479,6 +482,7 @@
 				D557EF0E1FD464200087B474 /* Activity.swift in Sources */,
 				D5D531231FD2FBBF00A54464 /* GroupTableViewController.swift in Sources */,
 				D56B274A1FD0F1510091648F /* ViewController.swift in Sources */,
+				E09696AE21E4BA9D00D8DC85 /* ActivityMemberTableViewCell.swift in Sources */,
 				E0D6EDFC1FD89A1500D8632C /* RegisterViewController.swift in Sources */,
 				D56B27481FD0F1510091648F /* AppDelegate.swift in Sources */,
 				E0AB9A751FD59F82005E4C0A /* Person.swift in Sources */,
@@ -646,7 +650,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Let's Meet/Let's Meet.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3HZ8GXD28Q;
+				DEVELOPMENT_TEAM = 754JLMB9L2;
 				INFOPLIST_FILE = "Let's Meet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.gabrieleoliaro.LetsMeet;
@@ -663,7 +667,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Let's Meet/Let's Meet.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3HZ8GXD28Q;
+				DEVELOPMENT_TEAM = 754JLMB9L2;
 				INFOPLIST_FILE = "Let's Meet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.gabrieleoliaro.LetsMeet;
