@@ -151,6 +151,58 @@ class ActivityViewController: UIViewController {
         return toreturn
     }
     
+    func leaveActivity(post_params: [String:Any]) -> String
+    {
+        
+        // this mutex will be used to make sure that we don't return a value until the datatask is actually done
+        let local_mutex = Mutex()
+        local_mutex.lock() // lock so that the function cannot return until the dataTask releases the lock upon finishing
+        
+        restoreCookies()
+        
+        var toreturn = "Failed."
+        
+        // dowload the data
+        let webservice_URL = URL(string: "https://www.gabrieleoliaro.it/db/leave_activity.php")
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Accept": "text/html",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        let session = URLSession(configuration: config)
+        var request = URLRequest(url: webservice_URL!)
+        request.httpMethod = "POST"
+        
+        let parameterArray = getPostString(params: post_params)
+        request.httpBody = parameterArray.data(using: String.Encoding.utf8)
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            print(response)
+            
+            guard let dataResponse = String(data: data!, encoding: .utf8), error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                
+                // done with the datatask (failed), so unlock the mutex
+                local_mutex.unlock()
+                //print("toreturn: "); print(toreturn); print("\n")
+                return
+            }
+            
+            print(dataResponse)
+            toreturn = dataResponse
+            
+            local_mutex.unlock()
+            
+        }
+        task.resume()
+        
+        local_mutex.lock()
+        
+        return toreturn
+    }
+    
     func checkIfMember() -> Bool
     {
         var isMember = false
@@ -188,6 +240,8 @@ class ActivityViewController: UIViewController {
             }
         }
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -213,6 +267,18 @@ class ActivityViewController: UIViewController {
         }
     }
     
+    @IBAction func leaveActivityButton(_ sender: UIButton) {
+        let leave_params:[String:String] = ["activity_id": (activity?.activity_id)!]
+        let return_string = leaveActivity(post_params: leave_params)
+        if (return_string != "Successfully removed you from the activity.")
+        {
+            self.showAlertView(error_message: return_string)
+        }
+        else {
+            LeaveActivityButtonOutlet.isEnabled = false
+            CanGoButtonOutlet.isEnabled = true
+        }
+    }
     
     // MARK: - Navigation
 

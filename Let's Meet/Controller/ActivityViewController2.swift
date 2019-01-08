@@ -7,8 +7,9 @@
 //
 import UIKit
 import EventKit
+import MessageUI
 
-class ActivityViewController2: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ActivityViewController2: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     
     var activity: ActivityInfo?
     var activity_members = [UserInfo]()
@@ -231,11 +232,22 @@ class ActivityViewController2: UIViewController, UITableViewDataSource, UITableV
                 print("granted \(granted)")
                 print("error \(error)")
                 
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.timeZone = TimeZone(secondsFromGMT: 0)
+                
                 let event:EKEvent = EKEvent(eventStore: eventStore)
-                event.title = "Add event testing Title"
-                event.startDate = Date()
-                event.endDate = Date()
-                event.notes = "This is a note"
+                event.title = (self.activity?.name)!
+                
+                event.startDate = formatter.date(from: (self.activity?.starting_time)!)!
+                
+                if (self.activity?.ending_time != nil)
+                {
+                    event.endDate = formatter.date(from: (self.activity?.ending_time)!)!
+                }
+                event.notes = (self.activity?.description)!
+                
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
                     try eventStore.save(event, span: .thisEvent)
@@ -262,9 +274,33 @@ class ActivityViewController2: UIViewController, UITableViewDataSource, UITableV
             }
         })
     }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
     @IBAction func sendMessage(_ sender: UIButton) {
         
+        if MFMailComposeViewController.canSendMail() {
+            let message = MFMailComposeViewController()
+            message.mailComposeDelegate = self
+            
+            var email_addresses = [String]()
+            for activity_member in activity_members {
+                email_addresses.append(activity_member.email)
+            }
+            
+            message.setToRecipients(email_addresses)
+            message.setSubject("Message from your fellow \(self.activity!.group_name)'s \(self.activity!.name) member")
+            
+            present(message, animated: true)
+        } else {
+            self.showAlertView(error_message: "could not send a message.")
+        }
     }
+    
+    
+    
     
     
     
