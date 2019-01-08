@@ -115,20 +115,14 @@ class AddActivityViewController: UIViewController, UIPickerViewDataSource, UIPic
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: UITextFieldDelegate
-    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        // Hide the keyboard
+    func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        return true
-        
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // When the user starts typing, scroll down the page using a scroll view, so that no textfield is covered by the keyboard.
-        scrollView.setContentOffset(CGPoint(x: 0, y: 175), animated: true)
-    }*/
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     //MARK: Picker Delegate and Data Source

@@ -86,6 +86,11 @@ class Login_RegisterViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func showAlertView(error_message: String)
     {
         // Show an alert message

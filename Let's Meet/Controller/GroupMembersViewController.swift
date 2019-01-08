@@ -225,7 +225,7 @@ class GroupMembersViewController: UIViewController, UITableViewDataSource, UITab
             
             
             RemoveMemberFromGroupViewController.group_name = current_group_name
-            RemoveMemberFromGroupViewController.group_name = current_group_owner
+            RemoveMemberFromGroupViewController.owner = current_group_owner
             
             
         case "leaveOrDeleteGroup":

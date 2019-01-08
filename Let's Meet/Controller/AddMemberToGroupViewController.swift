@@ -103,8 +103,11 @@ class AddMemberToGroupViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard
         textField.resignFirstResponder()
         return true
     }
@@ -138,8 +141,6 @@ class AddMemberToGroupViewController: UIViewController, UITextFieldDelegate {
         
         ResultTextField.text = addMember(post_params: add_params, url: "https://www.gabrieleoliaro.it/db/add_member_to_group.php")
         
-        
-
         
     }
     

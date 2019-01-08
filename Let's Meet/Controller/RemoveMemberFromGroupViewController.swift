@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RemoveMemberFromGroupViewController: UIViewController {
+class RemoveMemberFromGroupViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var resultTextField: UITextField!
@@ -125,4 +125,13 @@ class RemoveMemberFromGroupViewController: UIViewController {
     }
     */
 
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

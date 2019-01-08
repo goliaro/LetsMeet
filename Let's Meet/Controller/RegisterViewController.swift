@@ -210,6 +210,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
         
         if register(param: register_params, username: usernameTextField.text!, uploadUrl: webservice_URL!, imageView: profilePhotoImageView)
         {
+            UUsername = usernameTextField.text!
             performSegue(withIdentifier: "showGroupsTable", sender: sender)
         }
         
@@ -262,6 +263,17 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIScrollVie
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
     
     
 }

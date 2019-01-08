@@ -50,6 +50,12 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
         textField.resignFirstResponder()
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        
+    }
+    
 
     
     func create_group(param: [String:String]?, groupname: String, uploadUrl: URL, imageView: UIImageView) -> Bool
@@ -237,7 +243,6 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate, UIIma
         
         dismiss(animated: true, completion: nil)
     }
-    
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
