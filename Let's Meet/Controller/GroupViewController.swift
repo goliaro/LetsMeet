@@ -184,19 +184,16 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
     
+    // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return activities.count
     }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //Table view cells are reused and should be dequeued using a cell identifier.
@@ -213,8 +210,6 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.activityTitle.text = activity.name
         cell.activityStartingTime.text = activity.starting_time
         cell.activityEndingTime.text = activity.ending_time
-        
-        
         
         return cell
     }
@@ -233,9 +228,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         case "view_editMembers":
             os_log("Viewing or editing the members of the activity.", log: OSLog.default, type: .debug)
             
-            
         case "showDetail":
-            
             guard let activityDetailedViewController = segue.destination as? ActivityViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -248,29 +241,19 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            
             let selectedActivity = activities[indexPath.row]
             activityDetailedViewController.activity = selectedActivity
             activityDetailedViewController.group_name = group?.name
             
         case "addActivity":
-            guard let navVC = segue.destination as? UINavigationController else {
-                fatalError("Unexpected destination view controller \(segue.destination)")
-            }
-            
-            guard let addActivityViewController1 = navVC.viewControllers.first as? AddActivityViewController else {
-                fatalError("Unexpected destination: \(navVC.viewControllers.first)")
-                
-            }
-            
-            //addActivityViewController1.recent_activities = group?.recent_activities
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let AddActivityViewController = destinationNavigationController.topViewController as!AddActivityViewController
+            AddActivityViewController.group_name = group?.name
         
         case "showGroupMembers":
-            
             guard let groupMembersViewController = segue.destination as? GroupMembersViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            
             
             groupMembersViewController.current_group_name = group?.name
             groupMembersViewController.current_group_owner = group?.owner
@@ -291,13 +274,11 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     // MARK: Actions
-    @IBAction func unwindToGroupView(sender: UIStoryboardSegue) {
-        if let sourceviewController = sender.source as? AddActivityViewController2, let activity = sourceviewController.activity {
-            // Add a new activity
-            let newIndexPath = IndexPath(row: activities.count, section: 0)
-            
-            // dactivities.append(activity)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        }
+    @IBAction func unwindToGroupView(segue:UIStoryboardSegue) {
+        unwind_mutex.lock()
+        self.getUpdatedInfo()
+        unwind_mutex.lock()
+        tableView.reloadData()
+        unwind_mutex.unlock()
     }
 }
