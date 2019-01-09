@@ -4,6 +4,7 @@ Let'sMeet!
 Documentation of our iOS App, Let’s Meet
 
 Originally: CS50 Final Project - December 2017
+
 Authors: Alejandro Gracia-Zhang, Gabriel Oliaro, Kit McArthur
 
 Welcome to the newest app on the block, Let's Meet! It's a tool that enables users to instantly find people with whom they can study, eat lunch, and do other activities -- all without worrying about bothering people who don’t happen to be available to study or hang out at the same time as you.
