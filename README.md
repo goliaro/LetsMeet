@@ -3,8 +3,7 @@ Let'sMeet!
 
 Documentation of our iOS App, Let’s Meet
 
-CS50 Final Project
-December 7, 2017
+Originally: CS50 Final Project - December 2017
 Authors: Alejandro Gracia-Zhang, Gabriel Oliaro, Kit McArthur
 
 Welcome to the newest app on the block, Let's Meet! It's a tool that enables users to instantly find people with whom they can study, eat lunch, and do other activities -- all without worrying about bothering people who don’t happen to be available to study or hang out at the same time as you.
@@ -35,7 +34,7 @@ Add Start/End Times
 
 
 ## Starting/Running the Application
-Because it costs $99 to have an iOS Developer Certificate, our app has not been put on the App Store for the public.  However, running it directly from Xcode from an Apple computer allows it to function exactly as if it had been downloaded from the App Store.Open the “Let’s Meet.xcworkspace” file and choose the simulator or device to run the app on.   Tap (or click if using the simulator) on the app to open it and you will see the login page.  If you already have an account, enter the email and password you used to sign in.  If you are new, simply tap the register button near the bottom of the screen.
+Because it hasn't been published to the App Store, this app can only be run on your own iOS device if you have a iOS Developer Certificate. However, everyone can run it directly in the Xcode simulator, which allows it to function exactly as if it had been downloaded from the App Store. Open the “Let’s Meet.xcworkspace” file and choose the simulator or device to run the app on.   Tap (or click if using the simulator) on the app to open it and you will see the login page.  If you already have an account, enter the email and password you used to sign in.  If you are new, simply tap the register button near the bottom of the screen.
 
 ## Register
 On this page, there are various blank fields for you to fill: name, email, password (minimum of six characters), and confirm password, as well as a place to upload a profile photo from your device. You won’t be able to proceed unless each field is filled. A profile photo is not necessary to continue. One you’re ready to proceed, selecting “Done” will lead you to the “Your Groups” page.
